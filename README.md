@@ -229,12 +229,59 @@ This codebase is built with AI-assisted engineering workflows: specs and plans w
 
 ## Screenshots
 
-<!-- Replace with real files. 4-6 images. Redact tenant names, emails, phone numbers, keys. -->
+Operator dashboard, captured from a demo workspace.
 
-| | |
-|---|---|
-| <img src="screenshots/rich-menu-editor.png" width="420" alt="Rich Menu editor"><br/><sub>Native Rich Menu editor: composes and publishes to LINE OA via the Messaging API</sub> | <img src="screenshots/booking-conversation.png" width="420" alt="Booking flow"><br/><sub>End-to-end booking inside a LINE conversation</sub> |
-| <img src="screenshots/document-ingestion.png" width="420" alt="Document ingestion"><br/><sub>Vision ingestion: source document beside extracted structured JSON</sub> | <img src="screenshots/usage-metering.png" width="420" alt="Usage metering"><br/><sub>Per-tenant, per-model AI usage metering</sub> |
+### First run: the operator picks their language before anything else
+
+<p align="center">
+  <img src="screenshots/onboarding-language-select.png" width="820" alt="Onboarding language selection across five locales">
+</p>
+
+<p align="center"><sub>Locale is the first decision in setup, not a setting buried three menus deep. The operator interface ships in English, Thai, Japanese, Simplified Chinese and Traditional Chinese, and the choice follows them through every screen that follows.</sub></p>
+
+### Knowledge ingestion: nothing reaches a customer unreviewed
+
+<p align="center">
+  <img src="screenshots/documents-review-queue.png" width="900" alt="Documents page showing the source-to-answer pipeline and website source intake">
+</p>
+
+<p align="center"><sub>Uploaded documents and crawled websites enter the same review queue. The pipeline is explicit about its stages — extract facts with provenance and confidence, confirm the operating model, then shape reviewed facts into customer journeys — and explicit that none of it publishes automatically. Conflicts and unknowns surface for review instead of silently becoming facts.</sub></p>
+
+<p align="center">
+  <img src="screenshots/documents-review-queue-japanese.png" width="900" alt="The same Documents page rendered in Japanese with the AI usage meter at 25 percent">
+</p>
+
+<p align="center"><sub>The same page in Japanese. Localization covers body copy, helper text and validation messaging, not just navigation labels. The AI meter in the header is live per workspace: 0% in the English capture above, 25% here after extraction ran.</sub></p>
+
+### LINE Rich Menu, built in the dashboard
+
+<p align="center">
+  <img src="screenshots/line-rich-menu-editor.png" width="760" alt="Rich Menu editor mapping six tappable areas to published menu options">
+</p>
+
+<p align="center"><sub>A fixed LINE layout, a menu image, and each tappable area mapped to a published menu option, a message, or a language switch — then published as one tenant-fenced menu. The design guidance is deliberate: the rich menu is a launcher, not a second navigation system, because competing menus let customers bypass the guided flow.</sub></p>
+
+### Menu Flow: one edit, five locales
+
+<p align="center">
+  <img src="screenshots/menu-flow-translation-in-progress.png" width="900" alt="Menu node labels being translated across Japanese, Thai, Simplified and Traditional Chinese">
+</p>
+
+<p align="center"><sub>An operator types a label once in their own language. Translation into the remaining four locales runs asynchronously per field, for the node label and for every navigation option beneath it.</sub></p>
+
+<p align="center">
+  <img src="screenshots/menu-flow-translation-complete.png" width="900" alt="Completed translations marked as auto-translated and editable">
+</p>
+
+<p align="center"><sub>Completed translations are labelled <em>auto-translated, edit to make it yours</em>. Machine output is a starting point the operator owns, not a result they are stuck with — the same principle as the document review queue, applied to menu copy.</sub></p>
+
+### Billing in the operator's own currency
+
+<p align="center">
+  <img src="screenshots/billing-thai-thb.png" width="900" alt="Billing page in Thai showing monthly and annual plans priced in baht">
+</p>
+
+<p align="center"><sub>Plans priced natively in the market's own currency rather than converted at checkout: Thai baht here, with Japanese yen, Taiwan dollars and US dollars configured alongside it across three tiers, monthly and annual.</sub></p>
 
 ---
 
