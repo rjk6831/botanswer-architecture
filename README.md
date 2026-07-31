@@ -171,7 +171,7 @@ sequenceDiagram
     W->>E: dispatch
     E->>D: load context (profile, business docs, booking state)
     E->>M: request completion (tenant model config)
-    M->>M: select model; fall back on provider error
+    M->>M: select model, fall back on provider error
     M-->>E: structured response (schema re-validated)
     alt handoff condition met
         E->>S: notify staff, pause automation
