@@ -1,0 +1,248 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1540 1010" width="1540" height="1010" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .hd  { fill:#ffffff; font-weight:700; }
+      .sub { fill:#c7d6ea; }
+      .ttl { font-weight:700; fill:#12283f; }
+      .sm  { font-size:11.5px; fill:#3c4b5f; }
+      .xs  { font-size:10.5px; fill:#5a6b80; }
+      .lbl { font-size:10px; fill:#6b7f99; font-weight:600; letter-spacing:.4px; }
+      .grp { font-size:11px; font-weight:700; letter-spacing:1.1px; fill:#6b7f99; }
+      .num { font-size:12px; font-weight:700; fill:#ffffff; }
+    </style>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7d90a8"/>
+    </marker>
+    <marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7a6ca8"/>
+    </marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4f8a72"/>
+    </marker>
+    <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c07a34"/>
+    </marker>
+  </defs>
+
+  <rect width="1540" height="1010" fill="#ffffff"/>
+
+  <!-- HEADER -->
+  <rect x="0" y="0" width="1540" height="74" fill="#12283f"/>
+  <text x="770" y="33" class="hd" font-size="25" text-anchor="middle">BotAnswer.ai — Customer Journey &amp; Knowledge Pipeline</text>
+  <text x="770" y="56" class="sub" font-size="13.5" text-anchor="middle">First contact to completed booking or purchase · Deterministic-first ingestion · Bounded automation</text>
+
+  <!-- ================= LEFT: CUSTOMER JOURNEY ================= -->
+  <text x="24" y="103" class="grp">1 · CUSTOMER JOURNEY (IN LINE)</text>
+  <rect x="24" y="112" width="356" height="640" rx="8" fill="#f6f9fd" stroke="#5b7ea8" stroke-width="1.4"/>
+
+  <circle cx="52" cy="146" r="13" fill="#35608f"/><text x="52" y="150" class="num" text-anchor="middle">1</text>
+  <text x="78" y="143" class="ttl" font-size="12.5">First contact</text>
+  <text x="78" y="161" class="xs">Customer messages the Official Account or</text>
+  <text x="78" y="177" class="xs">taps a Rich Menu tile. Locale detected.</text>
+
+  <circle cx="52" cy="216" r="13" fill="#35608f"/><text x="52" y="220" class="num" text-anchor="middle">2</text>
+  <text x="78" y="213" class="ttl" font-size="12.5">Question answered from business data</text>
+  <text x="78" y="231" class="xs">RAG over the tenant's own published</text>
+  <text x="78" y="247" class="xs">documents, menus and price lists.</text>
+
+  <circle cx="52" cy="286" r="13" fill="#35608f"/><text x="52" y="290" class="num" text-anchor="middle">3</text>
+  <text x="78" y="283" class="ttl" font-size="12.5">Guided path selected</text>
+  <text x="78" y="301" class="xs">Menu Flow state machine steers to a</text>
+  <text x="78" y="317" class="xs">service booking or a product catalogue.</text>
+
+  <circle cx="52" cy="356" r="13" fill="#35608f"/><text x="52" y="360" class="num" text-anchor="middle">4</text>
+  <text x="78" y="353" class="ttl" font-size="12.5">Booking or cart</text>
+  <text x="78" y="371" class="xs">Native scheduling with calendar sync, or</text>
+  <text x="78" y="387" class="xs">cart assembly and checkout.</text>
+
+  <circle cx="52" cy="426" r="13" fill="#35608f"/><text x="52" y="430" class="num" text-anchor="middle">5</text>
+  <text x="78" y="423" class="ttl" font-size="12.5">Payment</text>
+  <text x="78" y="441" class="xs">Operator-configured payment methods,</text>
+  <text x="78" y="457" class="xs">assets served from signed R2 URLs.</text>
+
+  <circle cx="52" cy="496" r="13" fill="#35608f"/><text x="52" y="500" class="num" text-anchor="middle">6</text>
+  <text x="78" y="493" class="ttl" font-size="12.5">Payment verification</text>
+  <text x="78" y="511" class="xs">Customer submits proof; the operator</text>
+  <text x="78" y="527" class="xs">confirms or the flow escalates.</text>
+
+  <circle cx="52" cy="566" r="13" fill="#35608f"/><text x="52" y="570" class="num" text-anchor="middle">7</text>
+  <text x="78" y="563" class="ttl" font-size="12.5">Confirmation &amp; CRM record</text>
+  <text x="78" y="581" class="xs">Booking or order confirmed, customer</text>
+  <text x="78" y="597" class="xs">profile and history updated.</text>
+
+  <circle cx="52" cy="636" r="13" fill="#c07a34"/><text x="52" y="640" class="num" text-anchor="middle">8</text>
+  <text x="78" y="633" class="ttl" font-size="12.5" fill="#8a4a12">Human handoff (any point)</text>
+  <text x="78" y="651" class="xs">Policy or explicit request pauses automation</text>
+  <text x="78" y="667" class="xs">and notifies staff via LINE push.</text>
+
+  <rect x="44" y="686" width="316" height="50" rx="6" fill="#eef3fa" stroke="#8fa8c8"/>
+  <text x="58" y="706" class="xs" font-weight="700" fill="#35608f">Bounded automation</text>
+  <text x="58" y="724" class="xs">The bot never improvises past its knowledge.</text>
+
+  <!-- ================= CENTRE: RUNTIME PATH ================= -->
+  <text x="404" y="103" class="grp">2 · RUNTIME PATH (PER INBOUND MESSAGE)</text>
+  <rect x="404" y="112" width="452" height="640" rx="8" fill="#fbfcfe" stroke="#35608f" stroke-width="1.4"/>
+
+  <rect x="424" y="132" width="412" height="46" rx="7" fill="#eef3fa" stroke="#5b7ea8"/>
+  <text x="440" y="152" class="ttl" font-size="12">Webhook received</text>
+  <text x="440" y="169" class="xs">HMAC signature verified · tenant resolved · rate limited</text>
+
+  <line x1="630" y1="178" x2="630" y2="200" stroke="#7d90a8" stroke-width="1.6" marker-end="url(#a)"/>
+
+  <rect x="424" y="200" width="412" height="46" rx="7" fill="#eef3fa" stroke="#5b7ea8"/>
+  <text x="440" y="220" class="ttl" font-size="12">Context assembled</text>
+  <text x="440" y="237" class="xs">Customer profile · conversation state · booking state · locale</text>
+
+  <line x1="630" y1="246" x2="630" y2="268" stroke="#7d90a8" stroke-width="1.6" marker-end="url(#a)"/>
+
+  <rect x="424" y="268" width="412" height="46" rx="7" fill="#e7f0ec" stroke="#4f8a72"/>
+  <text x="440" y="288" class="ttl" font-size="12" fill="#14301f">Knowledge retrieval (RAG)</text>
+  <text x="440" y="305" class="xs">Grounded in published tenant knowledge only</text>
+
+  <line x1="630" y1="314" x2="630" y2="336" stroke="#7d90a8" stroke-width="1.6" marker-end="url(#a)"/>
+
+  <!-- decision -->
+  <rect x="424" y="336" width="412" height="42" rx="7" fill="#fdf3e3" stroke="#c07a34"/>
+  <text x="630" y="362" class="ttl" font-size="12" fill="#8a4a12" text-anchor="middle">Deterministic handler can serve this?</text>
+
+  <line x1="510" y1="378" x2="510" y2="404" stroke="#4f8a72" stroke-width="1.6" marker-end="url(#ag)"/>
+  <text x="518" y="396" class="xs" fill="#3a6b55" font-weight="700">yes</text>
+  <line x1="750" y1="378" x2="750" y2="404" stroke="#7a6ca8" stroke-width="1.6" marker-end="url(#ap)"/>
+  <text x="758" y="396" class="xs" fill="#5b4a91" font-weight="700">no</text>
+
+  <rect x="424" y="404" width="196" height="66" rx="7" fill="#e7f0ec" stroke="#4f8a72"/>
+  <text x="438" y="424" class="ttl" font-size="11.5" fill="#14301f">Deterministic reply</text>
+  <text x="438" y="441" class="xs">Menu Flow node, fixture,</text>
+  <text x="438" y="457" class="xs">or stored answer. No model call.</text>
+
+  <rect x="640" y="404" width="196" height="66" rx="7" fill="#f0eef8" stroke="#7a6ca8"/>
+  <text x="654" y="424" class="ttl" font-size="11.5" fill="#392c63">Model router</text>
+  <text x="654" y="441" class="xs">Tenant model config,</text>
+  <text x="654" y="457" class="xs">ordered provider fallback.</text>
+
+  <line x1="738" y1="470" x2="738" y2="492" stroke="#7a6ca8" stroke-width="1.6" marker-end="url(#ap)"/>
+  <rect x="640" y="492" width="196" height="52" rx="7" fill="#f0eef8" stroke="#7a6ca8"/>
+  <text x="654" y="512" class="ttl" font-size="11.5" fill="#392c63">Structured output</text>
+  <text x="654" y="529" class="xs">Schema enforced, Zod re-validated</text>
+
+  <line x1="522" y1="470" x2="522" y2="570" stroke="#4f8a72" stroke-width="1.6" marker-end="url(#ag)"/>
+  <line x1="738" y1="544" x2="738" y2="570" stroke="#7a6ca8" stroke-width="1.6" marker-end="url(#ap)"/>
+
+  <rect x="424" y="570" width="412" height="46" rx="7" fill="#eef3fa" stroke="#5b7ea8"/>
+  <text x="440" y="590" class="ttl" font-size="12">Reply policy &amp; handoff check</text>
+  <text x="440" y="607" class="xs">Confidence, scope and policy gates before anything is sent</text>
+
+  <line x1="630" y1="616" x2="630" y2="638" stroke="#7d90a8" stroke-width="1.6" marker-end="url(#a)"/>
+
+  <rect x="424" y="638" width="412" height="46" rx="7" fill="#dfe9f6" stroke="#35608f"/>
+  <text x="440" y="658" class="ttl" font-size="12">Delivered to LINE</text>
+  <text x="440" y="675" class="xs">Reply · push · multicast transport, within message quota</text>
+
+  <rect x="424" y="698" width="412" height="38" rx="6" fill="#f7f5fc" stroke="#a89ccb"/>
+  <text x="438" y="722" class="xs" fill="#4a3b7a">Every model call metered per tenant and per model, settled against plan usage.</text>
+
+  <!-- ================= RIGHT: KNOWLEDGE PIPELINE ================= -->
+  <text x="880" y="103" class="grp">3 · KNOWLEDGE INGESTION PIPELINE (OPERATOR SIDE)</text>
+  <rect x="880" y="112" width="636" height="640" rx="8" fill="#fbfcfe" stroke="#4f8a72" stroke-width="1.4"/>
+
+  <!-- source A -->
+  <rect x="900" y="132" width="290" height="112" rx="7" fill="#f0eef8" stroke="#7a6ca8"/>
+  <text x="916" y="153" class="ttl" font-size="12" fill="#392c63">A · Documents &amp; images</text>
+  <text x="916" y="173" class="xs">Menus, price lists, brochures, spreadsheets</text>
+  <text x="916" y="193" class="sm" font-weight="700">Vision model is the primary path</text>
+  <text x="916" y="211" class="xs">Images genuinely require a vision model, so</text>
+  <text x="916" y="227" class="xs">discipline moves to strict schema + re-validation.</text>
+
+  <!-- source B -->
+  <rect x="1206" y="132" width="290" height="112" rx="7" fill="#e7f0ec" stroke="#4f8a72"/>
+  <text x="1222" y="153" class="ttl" font-size="12" fill="#14301f">B · Website ingestion</text>
+  <text x="1222" y="173" class="xs">Operator supplies a URL; queued for crawl</text>
+  <text x="1222" y="193" class="sm" font-weight="700">Deterministic parser is the primary path</text>
+  <text x="1222" y="211" class="xs">Recipe-driven DOM parsing, partitioning and</text>
+  <text x="1222" y="227" class="xs">incremental refresh. Model only on failure.</text>
+
+  <line x1="1045" y1="244" x2="1045" y2="272" stroke="#7a6ca8" stroke-width="1.6" marker-end="url(#ap)"/>
+  <line x1="1351" y1="244" x2="1351" y2="272" stroke="#4f8a72" stroke-width="1.6" marker-end="url(#ag)"/>
+
+  <!-- fallback ladder -->
+  <rect x="900" y="272" width="596" height="92" rx="7" fill="#fdf3e3" stroke="#c07a34"/>
+  <text x="916" y="293" class="ttl" font-size="12" fill="#8a4a12">Fallback ladder</text>
+  <text x="916" y="313" class="xs">Deterministic parse → structured extraction → metered LLM induction, in that order.</text>
+  <text x="916" y="333" class="xs">The model is reached only when the cheaper, reproducible step cannot answer.</text>
+  <text x="916" y="353" class="xs" font-weight="700" fill="#8a4a12">Bounded spend · reproducible output · a parser gap degrades quality, it does not break ingestion.</text>
+
+  <line x1="1198" y1="364" x2="1198" y2="392" stroke="#7d90a8" stroke-width="1.6" marker-end="url(#a)"/>
+
+  <!-- security gate -->
+  <rect x="900" y="392" width="596" height="86" rx="7" fill="#fdf1e7" stroke="#d08a4a"/>
+  <text x="916" y="413" class="ttl" font-size="12" fill="#8a4a12">Untrusted-input controls</text>
+  <text x="916" y="433" class="xs">• SSRF fencing and host allow-listing on every outbound fetch</text>
+  <text x="916" y="453" class="xs">• Media mirrored to R2 behind signed, short-lived, domain-separated URLs</text>
+  <text x="916" y="471" class="xs">• Prompt-injection blast radius validated in security review</text>
+
+  <line x1="1198" y1="478" x2="1198" y2="506" stroke="#7d90a8" stroke-width="1.6" marker-end="url(#a)"/>
+
+  <!-- review queue -->
+  <rect x="900" y="506" width="596" height="86" rx="7" fill="#eef3fa" stroke="#5b7ea8"/>
+  <text x="916" y="527" class="ttl" font-size="12">Operator review queue</text>
+  <text x="916" y="547" class="xs">Extracted facts land as proposals, not as live answers. The operator reviews,</text>
+  <text x="916" y="567" class="xs">edits and publishes. Source governance records what came from where.</text>
+  <text x="916" y="585" class="xs" font-weight="700" fill="#35608f">Nothing reaches a customer until a human has approved it.</text>
+
+  <line x1="1198" y1="592" x2="1198" y2="620" stroke="#4f8a72" stroke-width="1.6" marker-end="url(#ag)"/>
+
+  <!-- published -->
+  <rect x="900" y="620" width="290" height="112" rx="7" fill="#e7f0ec" stroke="#4f8a72"/>
+  <text x="916" y="641" class="ttl" font-size="12" fill="#14301f">Published knowledge (D1)</text>
+  <text x="916" y="661" class="xs">Retrievable structured JSON, versioned</text>
+  <text x="916" y="681" class="xs">Feeds RAG answering at runtime</text>
+  <text x="916" y="701" class="xs">Auto-populates in-app menus</text>
+  <text x="916" y="721" class="xs">Incremental refresh on cron</text>
+
+  <rect x="1206" y="620" width="290" height="112" rx="7" fill="#f6f9fd" stroke="#5b7ea8"/>
+  <text x="1222" y="641" class="ttl" font-size="12">Why deterministic-first</text>
+  <text x="1222" y="661" class="xs">Sending every page through an LLM is</text>
+  <text x="1222" y="681" class="xs">simpler to build and worse to operate:</text>
+  <text x="1222" y="701" class="xs">it costs per page forever, adds seconds of</text>
+  <text x="1222" y="721" class="xs">latency, and is not reproducible.</text>
+
+  <!-- link runtime <- knowledge -->
+  <path d="M900 676 L868 676 L868 291 L836 291" fill="none" stroke="#4f8a72" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ag)"/>
+  <text x="872" y="484" class="xs" fill="#3a6b55" font-weight="700" transform="rotate(-90 872 484)" text-anchor="middle">published knowledge feeds RAG</text>
+
+  <!-- ================= FOOTER BANDS ================= -->
+  <rect x="24" y="772" width="486" height="190" rx="8" fill="#f7f5fc" stroke="#7a6ca8" stroke-width="1.4"/>
+  <text x="44" y="796" class="ttl" font-size="13" fill="#392c63">Cost &amp; latency controls</text>
+  <text x="44" y="820" class="sm">• Deterministic path resolves without any model call</text>
+  <text x="44" y="840" class="sm">• Task-scoped routing: cheap models for cheap tasks</text>
+  <text x="44" y="860" class="sm">• Per-tenant, per-model metering and quota guard</text>
+  <text x="44" y="880" class="sm">• Plan-limit gating and prepaid usage credits</text>
+  <text x="44" y="900" class="sm">• Ingestion runs async on a queue, off the reply path</text>
+  <text x="44" y="920" class="sm">• Incremental refresh re-parses only what changed</text>
+  <text x="44" y="944" class="xs" fill="#5b4a91">Cost is only controllable if it is observable at a single point.</text>
+
+  <rect x="526" y="772" width="486" height="190" rx="8" fill="#fdf1e7" stroke="#d08a4a" stroke-width="1.4"/>
+  <text x="546" y="796" class="ttl" font-size="13" fill="#8a4a12">Handoff &amp; human control</text>
+  <text x="546" y="820" class="sm">• Explicit customer request escalates immediately</text>
+  <text x="546" y="840" class="sm">• Policy triggers: low confidence, out of scope, payment dispute</text>
+  <text x="546" y="860" class="sm">• Staff notified by LINE push with conversation context</text>
+  <text x="546" y="880" class="sm">• Automation pauses for that conversation until released</text>
+  <text x="546" y="900" class="sm">• Staff link codes bind a person to a tenant safely</text>
+  <text x="546" y="920" class="sm">• Every handoff and resolution is recorded and queryable</text>
+  <text x="546" y="944" class="xs" fill="#8a4a12">Automation should stop where the operator says it stops.</text>
+
+  <rect x="1028" y="772" width="488" height="190" rx="8" fill="#f1f6f4" stroke="#4f8a72" stroke-width="1.4"/>
+  <text x="1048" y="796" class="ttl" font-size="13" fill="#1d4736">Multilingual by construction</text>
+  <text x="1048" y="820" class="sm">• Operator interface in 5 locales: EN · TH · JA · zh-Hans · zh-TW</text>
+  <text x="1048" y="840" class="sm">• 1,526 message keys, audited on every build</text>
+  <text x="1048" y="860" class="sm">• Zero missing or orphaned keys enforced by CI gate</text>
+  <text x="1048" y="880" class="sm">• Bidirectional customer translation on the conversation path</text>
+  <text x="1048" y="900" class="sm">• Locale detected per customer, carried through the journey</text>
+  <text x="1048" y="920" class="sm">• Target markets: Thailand · Japan · Taiwan</text>
+  <text x="1048" y="944" class="xs" fill="#1d4736">A Thai operator and a Japanese customer can transact in the same thread.</text>
+
+  <!-- footer -->
+  <rect x="0" y="976" width="1540" height="34" fill="#12283f"/>
+  <text x="24" y="998" class="xs" fill="#9fb4cd">BotAnswer.ai · Roots No Limits LLC · Private beta</text>
+  <text x="1516" y="998" class="xs" fill="#9fb4cd" text-anchor="end">v1.0 · July 2026</text>
+</svg>
