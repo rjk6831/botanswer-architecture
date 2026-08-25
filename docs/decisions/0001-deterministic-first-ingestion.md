@@ -22,18 +22,16 @@ The pipeline is recipe-driven: a per-source recipe describes how to locate and p
 
 When the deterministic path cannot produce a valid result, a fallback ladder escalates: structured extraction first, then metered LLM induction as the last rung. Anything the model produces is constrained to a strict schema and re-validated before it is written.
 
-The whole thing runs as a Cloudflare Queue consumer, off the request path, so a slow site never blocks the dashboard.
+The whole thing runs as a Cloudflare Queue consumer, off the request path, so a slow site does not hold the dashboard HTTP request open.
 
 ## Consequences
 
-**Good.** Most pages cost nothing per crawl. Latency on the common path is network-bound rather than model-bound. Output is reproducible, which is what makes incremental refresh work at all. A parser gap degrades quality instead of breaking ingestion, because the fallback still catches it.
+**Good.** Pages handled by deterministic recipes incur no model-call cost. Their latency is network- and parser-bound, and their output is reproducible, which makes meaningful incremental refresh possible. When parsing cannot produce a valid result, the request remains eligible for a bounded fallback rather than silently becoming publishable data.
 
-**Bad.** Recipes need maintenance as site structures drift. There is meaningfully more code than the naive version, and it needs its own tests. Fallback rate has to be watched — if it climbs, the deterministic path is quietly rotting and the cost argument erodes with it.
+**Bad.** Recipes need maintenance as site structures drift. There is meaningfully more code than the naive version, and it needs its own tests. Actual deterministic coverage and fallback rate are not yet instrumented, so the system cannot currently prove what share of pages avoids the model path.
 
 **Neutral.** This inverts for document ingestion. Images genuinely require a vision model, so there the model *is* the primary path, and the discipline shifts entirely to schema constraint and re-validation.
 
 ## What I would revisit
 
-If sustained fallback rate went past roughly a third, the maintenance cost of recipes would start to outweigh what they save, and the honest move would be to invert the ladder for the classes of site that fail most.
-
-Per-source fallback-rate metrics should also drive recipe work directly rather than being reviewed ad hoc. That instrumentation is not built yet.
+Per-source fallback-rate instrumentation should come first. If sustained fallback then went past roughly a third for a class of site, the maintenance cost of its recipes would start to outweigh what they save, and the honest move would be to invert the ladder for that class rather than defend the original choice.
