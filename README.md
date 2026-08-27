@@ -9,7 +9,7 @@ human handoff.
 
 **Designed, built, and operated by [Raymond J. Kraft](https://linkedin.com/in/raymondkraft).**
 
-[Public demo](https://app.botanswer.ai/demo) · [Product site](https://botanswer.ai) · [Guided walkthrough](mailto:ray@rootsnolimits.com?subject=BotAnswer.ai%20architecture%20walkthrough)
+[Open the BotAnswer app](https://app.botanswer.ai) · [Preview the marketing site in development](https://preview.botanswer.ai) · [Static operator screen](https://app.botanswer.ai/demo) · [Guided walkthrough](mailto:ray@rootsnolimits.com?subject=BotAnswer.ai%20architecture%20walkthrough)
 
 </div>
 
@@ -22,19 +22,20 @@ human handoff.
 
 <table>
   <tr>
-    <td align="center"><strong>≈2,700</strong><br><sub>automated test cases<br>captured WIP inventory</sub></td>
-    <td align="center"><strong>203,782</strong><br><sub>authored TS/TSX/SQL lines<br>captured WIP inventory</sub></td>
+    <td align="center"><strong>3,185</strong><br><sub>collected test cases<br>current WIP inventory</sub></td>
+    <td align="center"><strong>≈364,000</strong><br><sub>repository lines<br>application, tests, and support</sub></td>
     <td align="center"><strong>0068</strong><br><sub>production schema<br>read-only checkpoint</sub></td>
     <td align="center"><strong>2,099 each × 5</strong><br><sub>locale catalogs<br>last complete audit</sub></td>
   </tr>
 </table>
 
-<p align="center"><sub><strong>Captured 24 August 2026.</strong> Working-tree inventory, last-green verification, and production state are intentionally separate. <a href="docs/ENGINEERING_EVIDENCE.md">Definitions, receipts, and measurement method →</a></sub></p>
+<p align="center"><sub><strong>Repository inventory refreshed 27 August 2026.</strong> Working-tree inventory, last-green verification, and production state are intentionally separate. Production and localization retain their own last-recorded checkpoints. <a href="docs/ENGINEERING_EVIDENCE.md">Definitions, receipts, and measurement method →</a></sub></p>
 
-**See it running:** the [no-signup public demo](https://app.botanswer.ai/demo) is a
-limited Thai-language operator view. The full multi-tenant dashboard is in private
-beta at [app.botanswer.ai](https://app.botanswer.ai); a guided technical and product
-walkthrough is available on request.
+**Explore the product:** open the subscription-gated web application at
+[app.botanswer.ai](https://app.botanswer.ai), and visit the
+[marketing site in development](https://preview.botanswer.ai) for the evolving public
+product story. The no-signup [/demo route](https://app.botanswer.ai/demo) is only a
+static rendering of one operator screen, not a live product demo.
 
 **Jump to:** [Product](#the-product-in-four-systems) · [Architecture](#architecture) ·
 [Decisions](#architecture-decisions) · [Controls](#trust-failure-and-cost-boundaries) ·
@@ -187,9 +188,13 @@ condition that would justify revisiting the choice—not just the winning design
 
 ## Engineering evidence
 
-- **Approximately 2,700 test cases across 280 Git-visible test files.** The captured
-  working-tree inventory was 2,684. This is an inventory,
-  not a claim that an uncommitted working tree received a fresh full-suite pass.
+- **3,185 collected test cases across 345 test files.** Structured Vitest collection
+  found 2,341 Worker/runtime unit cases, 352 D1 cases, and 492 dashboard cases in the
+  current working tree. This is inventory, not a fresh full-suite pass.
+- **363,798 repository lines across 1,218 files.** The broad maintenance-surface
+  count includes application source, automated tests, SQL migrations, documentation,
+  and supporting configuration; it excludes dependencies and binary assets and is not
+  presented as semantic source lines of code.
 - **Two TypeScript compile gates** cover the Worker/runtime and test projects; the
   dashboard has its own typecheck and production build.
 - **Five-catalog localization audit** rejects missing and orphaned entries. The last
@@ -215,9 +220,13 @@ strength of generation alone; they must satisfy the same scoped evidence gates.
 
 ## Product view
 
-For live behavior, use the limited, no-signup [public demo](https://app.botanswer.ai/demo).
-The private-beta onboarding capture below documents a separate product principle: the
-operator's language is the first setup decision, not a preference buried after setup.
+Explore the actual subscription-gated web SPA at
+[app.botanswer.ai](https://app.botanswer.ai), and check out the
+[marketing site in development](https://preview.botanswer.ai). The no-signup
+[/demo route](https://app.botanswer.ai/demo) is a static sample of one operator screen,
+not a live application experience. The private-beta onboarding capture below documents
+a separate product principle: the operator's language is the first setup decision, not
+a preference buried after setup.
 
 <p align="center">
   <img src="screenshots/onboarding-language-select.png" width="820" alt="BotAnswer onboarding language selection for English, Thai, Japanese, Simplified Chinese, and Traditional Chinese">
