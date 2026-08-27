@@ -17,17 +17,19 @@ Publishing extracted content straight to live answering optimizes for onboarding
 
 Extracted content lands in an operator review queue as a proposal. It is not retrievable by the conversation engine until an operator reviews and publishes it.
 
-Alongside that, outbound fetching is fenced: SSRF protection and host allow-listing on every request, so ingestion cannot be steered at internal addresses. Fetched media is mirrored to R2 and served through signed, short-lived, domain-separated URLs rather than hot-linked. Source governance records where every published fact came from, so a wrong answer can be traced to a source and corrected there.
+Alongside that, website and media ingestion fetches are fenced with URL validation, SSRF protection, and host rules so a submitted source cannot steer the ingestion path at internal addresses. Fetched media is mirrored to R2 and served through signed, short-lived, domain-separated URLs rather than hot-linked. Source governance records where every published fact came from, so a wrong answer can be traced to a source and corrected there.
 
 Knowledge publication is explicit and fails closed: absent configuration means unpublished, never published.
 
 ## Consequences
 
-**Good.** Nothing reaches a customer without a human approving it, which contains both risks with one mechanism. Prompt-injection blast radius is bounded — injected instructions sit in a proposal an operator reads, rather than in live retrieval. Source governance makes corrections targeted instead of archaeological.
+**Good.** No ingested fact becomes eligible for customer retrieval until an operator publishes it. That review boundary reduces the direct path from untrusted source text into live answers and makes corrections targeted instead of archaeological.
+
+**Residual risk.** Human review reduces prompt-injection exposure; it does not prove source content safe or eliminate every downstream model risk. Fetch fencing, schema validation, publication state, retrieval scope, and reply policy remain independent controls.
 
 **Bad.** Onboarding has a manual step, and that is real friction at exactly the moment a new operator is deciding whether this product is worth it. Large sites mean a large queue. The review UI is a surface we would not otherwise have built.
 
-**Neutral.** The queue turns out to be useful beyond safety — operators frequently edit extracted content for tone and completeness, which they would not have done if it had gone live silently.
+**Neutral.** The queue is useful beyond safety: it gives operators a place to improve tone and completeness before extracted content can shape a customer answer.
 
 ## What I would revisit
 

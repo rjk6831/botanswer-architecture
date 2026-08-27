@@ -1,141 +1,109 @@
-# BotAnswer.ai: Architecture Overview
+<div align="center">
 
-**An AI receptionist and back-office for businesses that run on LINE.**
+# BotAnswer.ai
 
-BotAnswer handles a customer from first message to completed booking or purchase: answering questions from the business's own documents, taking the booking, collecting and verifying payment, keeping a CRM record, and handing off to a human when the automation should stop.
+<p><strong>A LINE-native receptionist and AI-assisted operations platform for multilingual businesses</strong></p>
 
-Multi-tenant SaaS. TypeScript on Cloudflare Workers, D1, R2 and Queues. Currently in private beta.
+From first message to grounded answer, booking or order flow, CRM continuity, and
+human handoff.
 
-> Application source is private. This repository documents the architecture, the design decisions behind it, and what the product actually does. Full walkthroughs available on request: [ray@rootsnolimits.com](mailto:ray@rootsnolimits.com).
+**Designed, built, and operated by [Raymond J. Kraft](https://linkedin.com/in/raymondkraft).**
 
-### See it running
+[Public demo](https://app.botanswer.ai/demo) · [Product site](https://botanswer.ai) · [Guided walkthrough](mailto:ray@rootsnolimits.com?subject=BotAnswer.ai%20architecture%20walkthrough)
 
-| | |
-|---|---|
-| **Public demo** | [app.botanswer.ai/demo](https://app.botanswer.ai/demo) &nbsp;·&nbsp; Open, no signup. A limited **Thai-language operator view** only; it does not cover the full dashboard. |
-| **Operator dashboard** | [app.botanswer.ai](https://app.botanswer.ai) &nbsp;·&nbsp; The real multi-tenant SPA, currently in private beta. Guided walkthrough available on request. |
+</div>
 
-**Links:** [botanswer.ai](https://botanswer.ai) | [Roots No Limits](https://rootsnolimits.com) | [LinkedIn](https://linkedin.com/in/raymondkraft)
+> **Private application, public evidence.** The production source remains private. This
+> repository is the technical case study: system boundaries, architecture diagrams,
+> product evidence, design decisions, and a dated engineering snapshot. BotAnswer is
+> currently a deployed private beta.
+
+## Engineering snapshot
+
+<table>
+  <tr>
+    <td align="center"><strong>≈2,700</strong><br><sub>automated test cases<br>captured WIP inventory</sub></td>
+    <td align="center"><strong>203,782</strong><br><sub>authored TS/TSX/SQL lines<br>captured WIP inventory</sub></td>
+    <td align="center"><strong>0068</strong><br><sub>production schema<br>read-only checkpoint</sub></td>
+    <td align="center"><strong>2,099 each × 5</strong><br><sub>locale catalogs<br>last complete audit</sub></td>
+  </tr>
+</table>
+
+<p align="center"><sub><strong>Captured 24 August 2026.</strong> Working-tree inventory, last-green verification, and production state are intentionally separate. <a href="docs/ENGINEERING_EVIDENCE.md">Definitions, receipts, and measurement method →</a></sub></p>
+
+**See it running:** the [no-signup public demo](https://app.botanswer.ai/demo) is a
+limited Thai-language operator view. The full multi-tenant dashboard is in private
+beta at [app.botanswer.ai](https://app.botanswer.ai); a guided technical and product
+walkthrough is available on request.
+
+**Jump to:** [Product](#the-product-in-four-systems) · [Architecture](#architecture) ·
+[Decisions](#architecture-decisions) · [Controls](#trust-failure-and-cost-boundaries) ·
+[Evidence](#engineering-evidence) · [Product view](#product-view)
 
 ---
+
+## The hard part is not generating a reply
+
+Generating plausible text is easy. A production system has to decide whether the
+tenant, identity, source, state, tool, budget, and confidence authorize any action at
+all.
+
+BotAnswer treats AI as one bounded subsystem inside a business-operations platform:
+
+- grounded business answers draw only from the current tenant's **published** knowledge;
+- deterministic state machines own bookings, carts, postbacks, and other exact flows;
+- structured model output used by application code crosses a schema-validation boundary;
+- ingestion produces proposals, never silently published facts;
+- activation-gated customer model calls carry tenant/model attribution and plan checks; and
+- policy or an explicit customer request pauses automation and hands control to staff.
+
+That is the architectural story in this repository: not “a chatbot,” but a system that
+knows where automation is allowed to act—and where it must stop.
+
+## The product in four systems
+
+| System | What is deployed in the private beta |
+|---|---|
+| **Customer runtime** | Deterministic LINE and published-knowledge flows; Menu Flow journeys; booking and cart/checkout paths; bounded staff handoff |
+| **Operator control plane** | Five-locale React dashboard; document and website intake; fact review and publication; LINE Rich Menu editor/composer; bookings, calendars, CRM, staff targets, usage, billing, and workspace administration |
+| **Knowledge and AI plane** | Operator-side extraction by content type; deterministic-first website ingestion with a separate OpenAI fallback seam; source provenance; an implemented but inactive customer router for OpenAI, Anthropic, and Google; structured output re-validation |
+| **Commercial and platform plane** | Multi-tenant Cloudflare Workers/D1/R2/Queues architecture; Stripe plans in THB, JPY, TWD, and USD; per-tenant/per-model metering; tenant-scoped rate limits and readiness controls |
+
+**Deliberate boundaries:** native iOS and Android clients are planned, not built.
+Customer provider and generative modes are disabled in the deployed beta; the
+three-provider customer router is implemented but inactive. Payment-proof intelligence
+and the repaired Rich Menu publication path are locally implemented; production
+deployment and live UAT remain pending. Automated bank settlement verification is not
+claimed.
 
 ## Why LINE first
 
-LINE is not a niche channel in its home markets. In Thailand, Japan and Taiwan it is where consumers and businesses actually transact. Restaurants take orders in it, clinics book appointments in it, retailers close sales in it. Businesses across essentially every vertical run a LINE Official Account, and most run it by hand.
+In BotAnswer's target markets—Thailand, Japan, and Taiwan—LINE is often both the
+customer conversation and the operating surface around it. A generic adapter can send
+messages; it cannot make Rich Menus, postbacks, LINE Login, quota behavior, and staff
+handoff feel native without designing for them.
 
-That makes LINE a concentrated, underserved market rather than one channel among many. BotAnswer is built LINE-first and LINE-native: the Rich Menu editor, the booking flow, and the payment-verification loop are shaped around how LINE OA businesses actually operate, not retrofitted from a generic web-chat widget.
-
-The messaging layer is abstracted behind a platform adapter so additional channels can be added later, but the product is deliberately not channel-agnostic today. Depth in one channel beats shallow coverage of six.
-
----
-
-## What's implemented
-
-| Area | Detail |
-|---|---|
-| Conversational AI | Retrieval-augmented answering grounded in tenant business documents |
-| Model layer | Multi-model routing across OpenAI, Anthropic Claude and Google Gemini; per-tenant model/platform configuration; structured outputs with schema re-validation |
-| Document ingestion | Vision-based extraction of menus, price lists and brochures into retrievable structured JSON; auto-populates in-app menus |
-| Web ingestion | Deterministic crawl-and-parse pipeline; LLM called only on parse failure; runs as a Queue consumer |
-| LINE integration | Webhook signature verification, endpoint monitoring, native Rich Menu editor publishing via the Messaging API, LINE Login |
-| Booking | Native appointment booking and calendar integrations |
-| CRM | Customer profiles, locations, business context, conversation continuity |
-| Payments | Payment collection and payment-verification workflow |
-| Human handoff | Staff handoff with notification, bounded automation |
-| Billing | Stripe: 3 plan tiers × 4 currencies (THB / JPY / TWD / USD) × monthly and annual, with AI usage metered per tenant and per model |
-| Multilingual | 1,526 message keys across 5 locales (EN, TH, JA, zh-Hans, zh-TW), enforced by an automated audit |
-| Security | Per-tenant rate limiting, tenant isolation enforced by cross-tenant tests, SSRF fencing and host allow-listing on all outbound fetches, operator review queue before ingested content reaches customers |
-
-**Planned, not built:** native iOS/Android apps.
+The messaging seam remains abstracted so another channel can be added deliberately,
+but the product does not pretend to be channel-agnostic today. Depth in one operating
+environment is the choice. The trade-off is explicit in
+[ADR 0004](docs/decisions/0004-line-first-not-channel-agnostic.md).
 
 ---
 
-## Platform topology
+## Architecture
 
 <p align="center">
   <img src="docs/diagrams/botanswer-topology.svg" width="1000" alt="BotAnswer.ai platform topology and technical design">
 </p>
 
-<p align="center"><sub>Two Cloudflare Workers behind one zone, D1 / R2 / Queues for state, and a model router in front of three providers. Native mobile clients are planned, not shipped.</sub></p>
+<p align="center"><sub>Two Cloudflare Worker deployables: a customer-facing webhook runtime and an operator control plane. Queue consumption and scheduled work are handlers within the control-plane Worker, not additional deployed services.</sub></p>
 
----
+The architecture is intentionally edge-first: the request path, dashboard API, state,
+private objects, and asynchronous ingestion all remain on Cloudflare primitives. Model,
+billing, email, LINE, and calendar providers sit behind narrow adapters; none becomes
+the system of record for tenant workflow state.
 
-## System architecture
-
-The same system as a component graph, for readers who want the edges rather than the inventory:
-
-```mermaid
-%%{init: {'theme':'base','themeVariables':{
-  'fontFamily':'ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif',
-  'fontSize':'13px',
-  'primaryColor':'#eef3fa',
-  'primaryTextColor':'#12283f',
-  'primaryBorderColor':'#7f9dc2',
-  'lineColor':'#7d90a8',
-  'textColor':'#12283f',
-  'clusterBkg':'#fafbfd',
-  'clusterBorder':'#d4dde8',
-  'edgeLabelBackground':'#ffffff'
-}}}%%
-flowchart TB
-    subgraph Client["&nbsp;Clients&nbsp;"]
-      direction LR
-      LINE["LINE Official Account"]
-      DASH["Operator Dashboard<br/>React + Vite"]
-    end
-
-    subgraph Edge["&nbsp;Cloudflare Workers&nbsp;"]
-      WH["Webhook Handler<br/>signature verification"]
-      API["Dashboard API<br/>auth · rate limit · tenant scope"]
-      CONV["Conversation Engine"]
-      ROUTE["Model Router"]
-      ING["Ingestion Worker<br/>queue consumer"]
-      CRON["Cron Worker"]
-    end
-
-    subgraph Data["&nbsp;Cloudflare Storage&nbsp;"]
-      direction LR
-      D1[("D1<br/>tenants · conversations · bookings<br/>CRM · usage · documents")]
-      R2[("R2<br/>documents · payment assets")]
-      Q[["Queue<br/>web ingestion"]]
-    end
-
-    subgraph External["&nbsp;External Services&nbsp;"]
-      direction LR
-      OAI["OpenAI"]
-      ANT["Anthropic Claude"]
-      GEM["Google Gemini"]
-      STRIPE["Stripe"]
-      MG["Mailgun"]
-      CAL["Calendar providers"]
-    end
-
-    LINE -->|webhook| WH --> CONV
-    DASH --> API
-    CONV --> ROUTE
-    ROUTE --> OAI & ANT & GEM
-    CONV -->|retrieval| D1
-    API --> D1
-    API --> R2
-    API -->|enqueue| Q --> ING --> D1
-    ING -.->|fallback only| ROUTE
-    CRON --> D1
-    API --> STRIPE & MG
-    API --> CAL
-    CONV -->|handoff| DASH
-
-    classDef client fill:#eef3fa,stroke:#5b7ea8,stroke-width:1.2px,color:#12283f;
-    classDef worker fill:#dfe9f6,stroke:#35608f,stroke-width:1.2px,color:#0f2440;
-    classDef store  fill:#e7f0ec,stroke:#4f8a72,stroke-width:1.2px,color:#14301f;
-    classDef ext    fill:#f7f0e4,stroke:#a8873f,stroke-width:1.2px,color:#3d2f13;
-
-    class LINE,DASH client;
-    class WH,API,CONV,ROUTE,ING,CRON worker;
-    class D1,R2,Q store;
-    class OAI,ANT,GEM,STRIPE,MG,CAL ext;
-```
-
-## Request flow: inbound customer message
+### Inbound message lifecycle
 
 ```mermaid
 %%{init: {'theme':'base','themeVariables':{
@@ -145,150 +113,131 @@ flowchart TB
   'primaryTextColor':'#0f2440',
   'primaryBorderColor':'#35608f',
   'lineColor':'#7d90a8',
-  'textColor':'#12283f',
   'actorBkg':'#dfe9f6',
   'actorBorder':'#35608f',
   'actorTextColor':'#0f2440',
   'signalColor':'#5f7288',
   'signalTextColor':'#12283f',
-  'labelBoxBkg':'#eef3fa',
-  'labelBoxBorderColor':'#7f9dc2',
-  'labelTextColor':'#12283f',
   'noteBkg':'#f7f0e4',
-  'noteBorderColor':'#a8873f',
-  'sequenceNumberColor':'#ffffff'
+  'noteBorderColor':'#a8873f'
 }}}%%
 sequenceDiagram
     participant C as Customer (LINE)
     participant W as Webhook Worker
     participant E as Conversation Engine
     participant D as D1
-    participant M as Model Router
     participant S as Staff
 
     C->>W: message event
-    W->>W: verify signature, resolve tenant
-    W->>E: dispatch
-    E->>D: load context (profile, business docs, booking state)
-    E->>M: request completion (tenant model config)
-    M->>M: select model, fall back on provider error
-    M-->>E: structured response (schema re-validated)
-    alt handoff condition met
-        E->>S: notify staff, pause automation
-    else automated
-        E->>D: persist turn + metered usage
-        E-->>C: reply (booking / payment / answer)
+    W->>W: verify signature, replay guard, rate limit
+    W->>E: dispatch in resolved tenant scope
+    E->>D: load profile, workflow state, published knowledge
+    alt deterministic handler or published answer can resolve the turn
+        E->>E: prepare exact reply / booking / cart action
+        E->>E: apply authorization and reply policy
+        E->>D: persist state and audit
+        E-->>C: exact action or eligible published response
+    else no eligible response or policy requires handoff
+        E->>S: notify staff with bounded context
+        E->>D: persist pause for this conversation
     end
 ```
 
----
+The deployed webhook runtime keeps customer provider and generative modes disabled.
+The model router described in [ADR 0002](docs/decisions/0002-multi-model-routing.md) is
+implemented behind that activation boundary; production website ingestion uses a
+separate direct OpenAI fallback seam.
 
-## Customer journey and knowledge pipeline
-
-What a customer actually experiences, what the runtime does on each inbound message, and how business knowledge gets into the system in the first place:
+### Customer journey and knowledge pipeline
 
 <p align="center">
-  <img src="docs/diagrams/botanswer-conversation-flow.svg" width="1000" alt="BotAnswer.ai customer journey, runtime path and knowledge ingestion pipeline">
+  <img src="docs/diagrams/botanswer-conversation-flow.svg" width="1000" alt="BotAnswer.ai customer journey, runtime path, and knowledge-ingestion pipeline">
 </p>
 
-<p align="center"><sub>The deterministic branch resolves without a model call. Ingested content stays a proposal until an operator publishes it.</sub></p>
-
----
-
-## Design decisions
-
-Full ADRs in [`docs/decisions/`](docs/decisions). The two that shaped the system most:
-
-### Deterministic-first ingestion, LLM as fallback
-
-Web ingestion runs a deterministic crawl-and-parse pipeline first and calls a model only when deterministic parsing fails. Sending every page through an LLM is simpler to build and materially worse to operate: it costs per page forever, adds seconds of latency to a path where operators are watching a spinner, and makes output non-reproducible across runs.
-
-The tradeoff is real. The deterministic path needs maintenance as site structures change, and the fallback rate has to be watched. That's an acceptable cost for bounded spend and reproducible results, and the fallback means a parser gap degrades quality rather than breaking ingestion.
-
-The same principle applies to document ingestion, inverted: images genuinely require a vision model, so the model *is* the primary path there, and the discipline moves to constraining output to a strict schema and re-validating it before anything is written.
-
-### Multi-model routing rather than a single provider
-
-Model choice is per-tenant and per-task, not global. Different tasks have different quality floors and different cost ceilings (a greeting is not a document extraction), and provider outages are a real availability risk for a product whose core loop is a model call. Routing with ordered fallback means a provider incident degrades quality instead of taking the product down, and usage is metered per model so cost is attributable rather than a single opaque line item.
+<p align="center"><sub>The deterministic branch resolves without a model call. Extracted content remains a proposal until an operator publishes it; only published tenant knowledge is eligible for retrieval.</sub></p>
 
 ---
 
-## Engineering practices
+## Architecture decisions
 
-- **1,550+ automated tests** across 168 suites; typecheck gates on every change
-- **37 applied D1 migrations**, versioned and applied through Wrangler
-- **Automated i18n audit** in the build: 1,526 source keys × 5 locales, failing on any missing or orphaned key
-- **Security review** of the ingestion path covering SSRF, host allow-listing and prompt-injection blast radius
-- ~168,000 lines of TypeScript, React and SQL across the codebase (excluding lockfiles and generated artifacts)
+The ADRs include the rejected alternative, the operational consequence, and the
+condition that would justify revisiting the choice—not just the winning design.
 
-### On AI-assisted development
+| Decision | Why it exists | Accepted trade-off |
+|---|---|---|
+| [Deterministic-first web ingestion](docs/decisions/0001-deterministic-first-ingestion.md) | Avoid paying model cost on pages a reproducible parser can handle | Recipes require maintenance; real coverage still needs instrumentation |
+| [Multi-provider model routing](docs/decisions/0002-multi-model-routing.md) | Reduce dependence on one provider and match model cost/quality to the task | More adapters and provider differences to test |
+| [Operator-gated knowledge publication](docs/decisions/0003-operator-review-queue.md) | Keep unreviewed extraction out of customer retrieval | Adds onboarding friction and a review workload |
+| [LINE-first, not channel-agnostic](docs/decisions/0004-line-first-not-channel-agnostic.md) | Use the native surfaces that matter in the chosen market | A second channel is real product and engineering work |
+| [Per-tenant, per-model usage metering](docs/decisions/0005-metered-ai-usage-and-plan-gating.md) | Make variable AI cost attributable before enforcing plan limits | Every call site must stay inside the metered seam |
 
-This codebase is built with AI-assisted engineering workflows: specs and plans written first, implementation generated and reviewed, then gated behind typecheck, the test suite, the i18n audit, and security review before anything merges or deploys. The architecture decisions, the review, the test strategy, and everything running in production are mine. The tooling changes how fast code gets written; it doesn't change who is accountable for whether it's correct.
+[Read the ADR index →](docs/decisions/README.md)
+
+## Trust, failure, and cost boundaries
+
+| Boundary | Enforcement | Failure behavior |
+|---|---|---|
+| **Tenant data** | Tenant identity is resolved before repository access; cross-tenant cases are explicit tests | Deny rather than fall back to a broader scope |
+| **Published knowledge** | Proposed and published states are separate; only published facts enter retrieval | Missing publication state means unavailable, never implicitly live |
+| **Ingestion network** | URL validation, SSRF fencing, and host rules cover website and media ingestion fetches | Reject or quarantine the source; never follow it into private address space |
+| **Model output** | Provider adapters normalize errors; structured output is schema-enforced and re-validated | Try an eligible configured fallback, then fail closed or hand off |
+| **Human authority** | Handoff policy and explicit customer requests pause automation for the conversation | Staff receives bounded context and owns the next action |
+| **AI spend** | The activation-gated customer router meters per tenant/model and checks quota before provider work | Stop before unentitled spend rather than accounting for it afterward |
+| **Release state** | Verification lanes stay distinct and deployment requires evidence for the exact commit | A timeout, focused pass, or old receipt cannot be promoted into release proof |
+
+## Engineering evidence
+
+- **Approximately 2,700 test cases across 280 Git-visible test files.** The captured
+  working-tree inventory was 2,684. This is an inventory,
+  not a claim that an uncommitted working tree received a fresh full-suite pass.
+- **Two TypeScript compile gates** cover the Worker/runtime and test projects; the
+  dashboard has its own typecheck and production build.
+- **Five-catalog localization audit** rejects missing and orphaned entries. The last
+  recorded complete gate audited 2,099 keys in each catalog.
+- **Forward-only D1 history** is rehearsed separately from remote application state.
+  The captured snapshot contained 73 sequentially numbered migration files; production
+  was independently confirmed through migration 0068.
+- **Evidence lanes remain separate:** unit/component, D1/Miniflare, browser, provider,
+  production, commit, and deployment observations are reported for what they prove.
+- **Exact-commit release discipline:** a deployment candidate must match its successful
+  verification receipt; dirty, diverged, or changed candidates are rejected.
+
+[Read the measurement method, last complete checkpoints, and non-claims →](docs/ENGINEERING_EVIDENCE.md)
+
+### AI-assisted engineering, accountable ownership
+
+AI is an implementation accelerator inside a spec-first, verification-gated workflow.
+I own the domain model, architecture, code review, test design, release decisions, and
+production operations. Generated changes do not enter the deployed private beta on the
+strength of generation alone; they must satisfy the same scoped evidence gates.
 
 ---
 
-## Screenshots
+## Product view
 
-Operator dashboard, captured from a demo workspace.
-
-### First run: the operator picks their language before anything else
-
-<p align="center">
-  <img src="screenshots/onboarding-language-select.png" width="820" alt="Onboarding language selection across five locales">
-</p>
-
-<p align="center"><sub>Locale is the first decision in setup, not a setting buried three menus deep. The operator interface ships in English, Thai, Japanese, Simplified Chinese and Traditional Chinese, and the choice follows them through every screen that follows.</sub></p>
-
-### Knowledge ingestion: nothing reaches a customer unreviewed
+For live behavior, use the limited, no-signup [public demo](https://app.botanswer.ai/demo).
+The private-beta onboarding capture below documents a separate product principle: the
+operator's language is the first setup decision, not a preference buried after setup.
 
 <p align="center">
-  <img src="screenshots/documents-review-queue.png" width="900" alt="Documents page showing the source-to-answer pipeline and website source intake">
+  <img src="screenshots/onboarding-language-select.png" width="820" alt="BotAnswer onboarding language selection for English, Thai, Japanese, Simplified Chinese, and Traditional Chinese">
 </p>
 
-<p align="center"><sub>Uploaded documents and crawled websites enter the same review queue. The pipeline is explicit about its stages — extract facts with provenance and confidence, confirm the operating model, then shape reviewed facts into customer journeys — and explicit that none of it publishes automatically. Conflicts and unknowns surface for review instead of silently becoming facts.</sub></p>
-
-<p align="center">
-  <img src="screenshots/documents-review-queue-japanese.png" width="900" alt="The same Documents page rendered in Japanese with the AI usage meter at 25 percent">
-</p>
-
-<p align="center"><sub>The same page in Japanese. Localization covers body copy, helper text and validation messaging, not just navigation labels. The AI meter in the header is live per workspace: 0% in the English capture above, 25% here after extraction ran.</sub></p>
-
-### LINE Rich Menu, built in the dashboard
-
-<p align="center">
-  <img src="screenshots/line-rich-menu-editor.png" width="760" alt="Rich Menu editor mapping six tappable areas to published menu options">
-</p>
-
-<p align="center"><sub>A fixed LINE layout, a menu image, and each tappable area mapped to a published menu option, a message, or a language switch — then published as one tenant-fenced menu. The design guidance is deliberate: the rich menu is a launcher, not a second navigation system, because competing menus let customers bypass the guided flow.</sub></p>
-
-### Menu Flow: one edit, five locales
-
-<p align="center">
-  <img src="screenshots/menu-flow-translation-in-progress.png" width="900" alt="Menu node labels being translated across Japanese, Thai, Simplified and Traditional Chinese">
-</p>
-
-<p align="center"><sub>An operator types a label once in their own language. Translation into the remaining four locales runs asynchronously per field, for the node label and for every navigation option beneath it.</sub></p>
-
-<p align="center">
-  <img src="screenshots/menu-flow-translation-complete.png" width="900" alt="Completed translations marked as auto-translated and editable">
-</p>
-
-<p align="center"><sub>Completed translations are labelled <em>auto-translated, edit to make it yours</em>. Machine output is a starting point the operator owns, not a result they are stuck with — the same principle as the document review queue, applied to menu copy.</sub></p>
-
-### Billing in the operator's own currency
-
-<p align="center">
-  <img src="screenshots/billing-thai-thb.png" width="900" alt="Billing page in Thai showing monthly and annual plans priced in baht">
-</p>
-
-<p align="center"><sub>Plans priced natively in the market's own currency rather than converted at checkout: Thai baht here, with Japanese yen, Taiwan dollars and US dollars configured alongside it across three tiers, monthly and annual.</sub></p>
+<p align="center"><sub>Private-beta onboarding capture, not the limited public-demo route. The operator dashboard supports English, Thai, Japanese, Simplified Chinese, and Traditional Chinese.</sub></p>
 
 ---
 
 ## Stack
 
-TypeScript | Cloudflare Workers, D1, R2, Queues, Rate Limiting, Cron Triggers | React + Vite | Zod | Vitest | Stripe | Mailgun | LINE Messaging API & LINE Login | OpenAI, Anthropic, Google Gemini
+TypeScript · Cloudflare Workers · D1 · R2 · Queues · Rate Limiting · Cron Triggers ·
+React · Vite · Zod · Vitest · Stripe · Mailgun · LINE Messaging API · LINE Login ·
+OpenAI · Anthropic · Google Gemini
 
 ---
 
-Built and operated by **Raymond J. Kraft** | [rootsnolimits.com](https://rootsnolimits.com) | [LinkedIn](https://linkedin.com/in/raymondkraft)
+<div align="center">
+
+Built and operated by **Raymond J. Kraft** · [Roots No Limits](https://rootsnolimits.com) ·
+[LinkedIn](https://linkedin.com/in/raymondkraft) · [ray@rootsnolimits.com](mailto:ray@rootsnolimits.com)
+
+</div>

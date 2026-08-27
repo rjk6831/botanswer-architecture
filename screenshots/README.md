@@ -1,13 +1,37 @@
-# Screenshots
+# Product evidence capture policy
 
-Drop product screenshots here using the filenames referenced in the root `README.md`.
+The root README presents only product captures that are current, coherent, and safe to
+use as public evidence. A screenshot is not proof merely because it came from a running
+build.
 
-Before committing anything to this directory, redact:
+## Before adding a capture
 
-- tenant, business and customer names
-- email addresses, phone numbers and messaging user IDs
-- API keys, tokens and internal URLs
-- any real pricing you would rather not publish
+- use a fictional demo workspace and one exact application build;
+- remove operator, tenant, customer, email, phone, messaging, and provider identifiers;
+- remove API keys, tokens, internal URLs, raw enum values, database IDs, and object keys;
+- make sure visible capability copy matches the architecture claim beside the image;
+- avoid empty, disabled, read-only, loading, or error states unless that state is the
+  subject being documented;
+- keep branding and locale consistent across a gallery; and
+- prefer one screenshot that proves a product decision over several near-duplicates.
 
-Use a demo tenant with fictional data. Recommended width is roughly 1600px; the
-README renders them at 420px in a two-column table.
+## Capture quality
+
+- Aim for at least 1600 pixels on the long edge.
+- Capture the relevant surface without browser chrome or unrelated account controls.
+- Check legibility at the README's rendered width, normally 760–1000 pixels.
+- Write meaningful alt text and a caption that explains the product decision being
+  demonstrated.
+- Re-review the image whenever the surrounding claim or workflow changes.
+
+## Current public evidence
+
+`onboarding-language-select.png` is the only screenshot currently referenced by the
+architecture overview. It demonstrates five-locale first-run setup without exposing
+tenant or operator data.
+
+Six legacy captures that failed the checklist above were removed from the current
+public tree on 25 August 2026. Their original versions remain recoverable from Git
+history; they should not be restored without a fresh content and privacy review.
+
+[← Back to the architecture overview](../README.md)

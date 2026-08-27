@@ -24,7 +24,7 @@
   <!-- ============ HEADER ============ -->
   <rect x="0" y="0" width="1540" height="74" fill="#12283f"/>
   <text x="770" y="33" class="hd" font-size="25" text-anchor="middle">BotAnswer.ai — Platform Topology &amp; Technical Design</text>
-  <text x="770" y="56" class="sub" font-size="13.5" text-anchor="middle">LINE-native AI receptionist and business operations platform · Multi-tenant · Edge-first</text>
+  <text x="770" y="56" class="sub" font-size="13.5" text-anchor="middle">LINE-native receptionist + AI-assisted operations platform · Multi-tenant · Edge-first</text>
 
   <!-- ============ CLIENTS ROW ============ -->
   <text x="24" y="103" class="grp" fill="#6b7f99">CLIENT SURFACES</text>
@@ -34,10 +34,10 @@
   <rect x="24" y="112" width="330" height="30" class="box" fill="#dbe7f5" stroke="#5b7ea8" stroke-width="1.3"/>
   <text x="40" y="132" class="ttl t" font-size="13">LINE Official Account</text>
   <text x="332" y="132" class="xs" text-anchor="end" fill="#35608f">Customer</text>
-  <text x="40" y="160" class="sm">• Conversational AI, 5 languages</text>
-  <text x="40" y="180" class="sm">• Native Rich Menu (published via API)</text>
+  <text x="40" y="160" class="sm">• Localized deterministic runtime, 5 languages</text>
+  <text x="40" y="180" class="sm">• LINE Rich Menu interactions &amp; postbacks</text>
   <text x="40" y="200" class="sm">• Booking &amp; scheduling</text>
-  <text x="40" y="220" class="sm">• Payment + payment verification</text>
+  <text x="40" y="220" class="sm">• Tenant-grounded answers &amp; workflows</text>
   <text x="40" y="240" class="sm">• Guided catalogue &amp; checkout</text>
   <text x="40" y="260" class="sm">• Staff handoff on request or policy</text>
 
@@ -50,7 +50,7 @@
   <text x="384" y="180" class="sm">• Documents, Menu Flow, Rich Menu editor</text>
   <text x="384" y="200" class="sm">• Bookings, Appointments, Calendars, CRM</text>
   <text x="384" y="220" class="sm">• Handoffs, Analytics, Usage</text>
-  <text x="384" y="240" class="sm">• Billing, Payments, LINE integration</text>
+  <text x="384" y="240" class="sm">• Billing, entitlements, LINE integration</text>
   <text x="384" y="260" class="sm">• Magic-link + LINE Login auth</text>
 
   <!-- Public demo -->
@@ -60,7 +60,7 @@
   <text x="728" y="160" class="sm">• app.botanswer.ai/demo</text>
   <text x="740" y="178" class="xs">Thai operator view, limited scope</text>
   <text x="728" y="200" class="sm">• botanswer.ai (marketing)</text>
-  <text x="740" y="218" class="xs">Pre-launch</text>
+  <text x="740" y="218" class="xs">Product site</text>
   <text x="728" y="244" class="sm">• Native iOS / Android</text>
   <text x="740" y="262" class="xs" fill="#a8873f">Planned, not built</text>
 
@@ -68,10 +68,10 @@
   <rect x="1012" y="112" width="504" height="168" class="box" fill="#f0eef8" stroke="#7a6ca8" stroke-width="1.3"/>
   <text x="1032" y="136" class="ttl" font-size="13" fill="#392c63">Design principles</text>
   <text x="1032" y="162" class="sm">✓ &#160;LINE-first by design: depth in one channel beats shallow coverage of six</text>
-  <text x="1032" y="184" class="sm">✓ &#160;Deterministic code first; the model is the fallback, not the default path</text>
-  <text x="1032" y="206" class="sm">✓ &#160;Every AI call metered per tenant and per model, with cost attributable</text>
+  <text x="1032" y="184" class="sm">✓ &#160;Deterministic code first; customer model mode is activation-gated</text>
+  <text x="1032" y="206" class="sm">✓ &#160;Model calls route through tenant- and model-attributed metering</text>
   <text x="1032" y="228" class="sm">✓ &#160;Ingested content is untrusted until an operator reviews it</text>
-  <text x="1032" y="250" class="sm">✓ &#160;Features fail closed: absent config disables, never enables</text>
+  <text x="1032" y="250" class="sm">✓ &#160;Sensitive feature gates treat absent config as disabled</text>
   <text x="1032" y="272" class="sm">✓ &#160;Tenant isolation asserted by cross-tenant tests, not by convention</text>
 
   <!-- ============ CLOUDFLARE BAND ============ -->
@@ -97,9 +97,9 @@
   <text x="40" y="470" class="sm">• Tenant resolution &amp; isolation scope</text>
   <text x="40" y="490" class="sm">• Rate limiting &amp; replay guards</text>
   <text x="40" y="510" class="sm">• Menu Flow state machine</text>
-  <text x="40" y="530" class="sm">• Knowledge retrieval (RAG) + reply policy</text>
+  <text x="40" y="530" class="sm">• Published-knowledge lookup + reply policy</text>
   <text x="40" y="550" class="sm">• Booking &amp; postback handling</text>
-  <text x="40" y="570" class="sm">• Checkout, cart, payment verification</text>
+  <text x="40" y="570" class="sm">• Checkout &amp; cart routing</text>
   <text x="40" y="590" class="sm">• Handoff policy → staff notification</text>
   <text x="40" y="610" class="sm">• Reply / push / multicast transports</text>
   <rect x="40" y="622" width="438" height="30" rx="6" fill="#eef3fa" stroke="#8fa8c8"/>
@@ -111,25 +111,25 @@
   <text x="526" y="399" class="ttl t" font-size="13">Dashboard Worker · app.botanswer.ai</text>
   <text x="526" y="428" class="lbl">OPERATOR CONTROL PLANE</text>
   <text x="526" y="450" class="sm">• Auth: magic-link, LINE Login, sessions</text>
-  <text x="526" y="470" class="sm">• Document ingestion (vision → JSON)</text>
+  <text x="526" y="470" class="sm">• Content-type-aware extraction → JSON</text>
   <text x="526" y="490" class="sm">• Web ingestion producer → Queue</text>
-  <text x="526" y="510" class="sm">• Rich Menu composer &amp; publisher</text>
+  <text x="526" y="510" class="sm">• Rich Menu editor; publish UAT pending</text>
   <text x="526" y="530" class="sm">• Booking, calendars, CRM, handoffs</text>
   <text x="526" y="550" class="sm">• Billing, entitlements, usage &amp; quotas</text>
   <text x="526" y="570" class="sm">• Credentials vault (encrypted at rest)</text>
   <text x="526" y="590" class="sm">• Admin, provisioning, setup progress</text>
   <text x="526" y="610" class="sm">• Static asset serving (SPA)</text>
   <rect x="526" y="622" width="438" height="30" rx="6" fill="#eef3fa" stroke="#8fa8c8"/>
-  <text x="538" y="642" class="xs">Cron trigger (hourly) · scheduled refresh · queue consumer</text>
+  <text x="538" y="642" class="xs">Scheduled ingestion + booking handlers · queue consumer</text>
 
   <!-- AI orchestration -->
   <rect x="996" y="378" width="520" height="286" class="box" fill="#f7f5fc" stroke="#7a6ca8" stroke-width="1.6"/>
   <rect x="996" y="378" width="520" height="32" class="box" fill="#e9e5f5" stroke="#7a6ca8" stroke-width="1.6"/>
-  <text x="1012" y="399" class="ttl" font-size="13" fill="#392c63">Multi-Model / Multimodal Orchestration</text>
+  <text x="1012" y="399" class="ttl" font-size="13" fill="#392c63">Customer Model Router · Implemented, Inactive</text>
 
   <rect x="1012" y="422" width="150" height="46" rx="6" fill="#ffffff" stroke="#9b8ec4"/>
   <text x="1087" y="441" class="sm" text-anchor="middle" font-weight="700">OpenAI</text>
-  <text x="1087" y="458" class="xs" text-anchor="middle">GPT-5.6-terra</text>
+  <text x="1087" y="458" class="xs" text-anchor="middle">Configured GPT models</text>
   <rect x="1177" y="422" width="150" height="46" rx="6" fill="#ffffff" stroke="#9b8ec4"/>
   <text x="1252" y="441" class="sm" text-anchor="middle" font-weight="700">Anthropic</text>
   <text x="1252" y="458" class="xs" text-anchor="middle">Claude</text>
@@ -138,19 +138,19 @@
   <text x="1421" y="458" class="xs" text-anchor="middle">Gemini</text>
 
   <text x="1012" y="492" class="lbl">ROUTER</text>
-  <text x="1012" y="514" class="sm">• Per-tenant model + platform configuration</text>
-  <text x="1012" y="534" class="sm">• Ordered fallback on provider error or timeout</text>
-  <text x="1012" y="554" class="sm">• Task-scoped routing: reply · ingestion · translation · suggestion</text>
+  <text x="1012" y="514" class="sm">• Provider + generative modes disabled in deployed customer runtime</text>
+  <text x="1012" y="534" class="sm">• Implemented ordered fallback on provider error or timeout</text>
+  <text x="1012" y="554" class="sm">• Task scope: reply · translation · suggestion</text>
   <text x="1012" y="574" class="sm">• Structured outputs, schema enforcement, Zod re-validation</text>
-  <text x="1012" y="594" class="sm">• Vision pipeline: document image → retrievable structured JSON</text>
+  <text x="1012" y="594" class="sm">• Production ingestion uses a separate direct OpenAI seam</text>
   <text x="1012" y="614" class="sm">• Per-model usage metering, quota guard, cost settlement</text>
   <rect x="1012" y="626" width="488" height="26" rx="6" fill="#f0eef8" stroke="#a89ccb"/>
-  <text x="1024" y="644" class="xs" fill="#4a3b7a">Provider outage degrades answer quality; it does not take the product down.</text>
+  <text x="1024" y="644" class="xs" fill="#4a3b7a">Activation is explicit; implemented customer routing is not presented as live traffic.</text>
 
   <!-- arrows cloudflare -> workers -->
   <line x1="259" y1="342" x2="259" y2="378" stroke="#7d90a8" stroke-width="1.6" marker-end="url(#ar)"/>
   <line x1="745" y1="342" x2="745" y2="378" stroke="#7d90a8" stroke-width="1.6" marker-end="url(#ar)"/>
-  <line x1="980" y1="500" x2="996" y2="500" stroke="#7a6ca8" stroke-width="1.8" marker-end="url(#ar)"/>
+  <line x1="980" y1="500" x2="996" y2="500" stroke="#7a6ca8" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ar)"/>
   <line x1="494" y1="500" x2="510" y2="500" stroke="#7d90a8" stroke-width="1.6" marker-start="url(#ar)" marker-end="url(#ar)"/>
 
   <!-- ============ STORAGE ============ -->
@@ -163,12 +163,12 @@
   <text x="54" y="788" class="xs">bookings · appointments · CRM</text>
   <text x="54" y="806" class="xs">knowledge · documents · usage</text>
   <text x="54" y="824" class="xs">handoffs · audit · billing</text>
-  <text x="54" y="840" class="xs" font-weight="700" fill="#3a6b55">37 applied migrations</text>
+  <text x="54" y="840" class="xs" font-weight="700" fill="#3a6b55">Forward-only migration history</text>
 
   <rect x="274" y="726" width="212" height="118" rx="7" fill="#e7f0ec" stroke="#4f8a72"/>
   <text x="288" y="748" class="ttl" font-size="12.5" fill="#14301f">R2 object storage</text>
   <text x="288" y="770" class="xs">dashboard-documents</text>
-  <text x="288" y="788" class="xs">dashboard-payment-assets</text>
+  <text x="288" y="788" class="xs">tenant documents &amp; reviewed media</text>
   <text x="288" y="812" class="xs">Signed, short-lived,</text>
   <text x="288" y="830" class="xs">domain-separated URLs</text>
 
@@ -176,15 +176,15 @@
   <text x="514" y="748" class="ttl" font-size="12.5" fill="#14301f">Queues</text>
   <text x="514" y="770" class="xs">botanswer-web-ingestion</text>
   <text x="514" y="794" class="xs">Producer: dashboard Worker</text>
-  <text x="514" y="812" class="xs">Consumer: ingestion Worker</text>
+  <text x="514" y="812" class="xs">Consumer: dashboard Worker handler</text>
   <text x="514" y="836" class="xs">Async, retried, idempotent</text>
 
   <rect x="734" y="726" width="230" height="118" rx="7" fill="#e7f0ec" stroke="#4f8a72"/>
   <text x="748" y="748" class="ttl" font-size="12.5" fill="#14301f">Rate limiting &amp; cron</text>
-  <text x="748" y="770" class="xs">Auth limiter: 30 req / 60s</text>
-  <text x="748" y="788" class="xs">Combined limiter: 5 req / 60s</text>
-  <text x="748" y="812" class="xs">Cron trigger: hourly</text>
-  <text x="748" y="830" class="xs">Scheduled source refresh</text>
+  <text x="748" y="770" class="xs">Endpoint-specific rate limits</text>
+  <text x="748" y="788" class="xs">Tenant and operator scoped</text>
+  <text x="748" y="812" class="xs">Scheduled ingestion + booking</text>
+  <text x="748" y="830" class="xs">Durable queue-backed work</text>
 
   <!-- External services -->
   <text x="996" y="700" class="grp" fill="#6b7f99">EXTERNAL SERVICES</text>
@@ -204,7 +204,7 @@
 
   <rect x="1264" y="792" width="236" height="54" rx="6" fill="#f7f0e4" stroke="#a8873f"/>
   <text x="1278" y="812" class="ttl" font-size="12.5" fill="#3d2f13">Calendar providers</text>
-  <text x="1278" y="832" class="xs">Two-way appointment sync</text>
+  <text x="1278" y="832" class="xs">Availability reads · Google write-back</text>
 
   <!-- arrows workers -> storage -->
   <line x1="259" y1="664" x2="259" y2="710" stroke="#4f8a72" stroke-width="1.6" marker-end="url(#arg)"/>
@@ -216,18 +216,18 @@
   <text x="44" y="904" class="ttl" font-size="13" fill="#8a4a12">Security &amp; Trust</text>
   <text x="44" y="928" class="sm">• LINE webhook signature verification on every event</text>
   <text x="44" y="948" class="sm">• Tenant isolation asserted by cross-tenant access tests</text>
-  <text x="44" y="968" class="sm">• SSRF fencing + host allow-listing on outbound fetch</text>
-  <text x="44" y="988" class="sm">• Operator review queue before ingested content ships</text>
-  <text x="44" y="1008" class="sm">• Encrypted credential vault; secrets never in config</text>
-  <text x="44" y="1024" class="xs" fill="#8a4a12">Prompt-injection blast radius validated in security review</text>
+  <text x="44" y="968" class="sm">• SSRF fencing + host rules on ingestion fetches</text>
+  <text x="44" y="988" class="sm">• Operator publication gate for ingested facts</text>
+  <text x="44" y="1008" class="sm">• Provider credentials stored through the encrypted vault seam</text>
+  <text x="44" y="1024" class="xs" fill="#8a4a12">Layered review reduces prompt-injection exposure; it does not prove safety</text>
 
   <rect x="526" y="880" width="454" height="150" class="box" fill="#f1f6f4" stroke="#4f8a72" stroke-width="1.4"/>
   <text x="546" y="904" class="ttl" font-size="13" fill="#1d4736">Engineering &amp; quality gates</text>
-  <text x="546" y="928" class="sm">• 1,550+ automated tests across 168 suites (Vitest)</text>
-  <text x="546" y="948" class="sm">• Typecheck gate on every change (tsc, two projects)</text>
-  <text x="546" y="968" class="sm">• i18n audit: 1,526 keys × 5 locales, 0 missing / orphaned</text>
-  <text x="546" y="988" class="sm">• 37 versioned D1 migrations applied via Wrangler</text>
-  <text x="546" y="1008" class="sm">• Miniflare-backed D1 integration suite</text>
+  <text x="546" y="928" class="sm">• Vitest unit, component, integration &amp; D1 lanes</text>
+  <text x="546" y="948" class="sm">• Separate runtime, test &amp; dashboard type gates</text>
+  <text x="546" y="968" class="sm">• Five-catalog audit rejects missing / orphaned content</text>
+  <text x="546" y="988" class="sm">• Migration replay kept separate from remote state</text>
+  <text x="546" y="1008" class="sm">• Exact-commit readiness &amp; deployment evidence</text>
   <text x="546" y="1024" class="xs" fill="#1d4736">Built with AI-assisted workflows under explicit review and verification gates</text>
 
   <rect x="996" y="880" width="520" height="150" class="box" fill="#f6f9fd" stroke="#35608f" stroke-width="1.4"/>
@@ -235,12 +235,12 @@
   <text x="1016" y="928" class="sm"><tspan font-weight="700">Runtime</tspan> &#160;TypeScript · Cloudflare Workers · Wrangler 4</text>
   <text x="1016" y="948" class="sm"><tspan font-weight="700">Data</tspan> &#160;D1 (SQLite) · R2 · Queues · Rate Limiting · Cron</text>
   <text x="1016" y="968" class="sm"><tspan font-weight="700">Frontend</tspan> &#160;React 18 · Vite · TypeScript · 5 locales</text>
-  <text x="1016" y="988" class="sm"><tspan font-weight="700">Validation</tspan> &#160;Zod schemas on every boundary</text>
+  <text x="1016" y="988" class="sm"><tspan font-weight="700">Validation</tspan> &#160;Zod at model and structured-input boundaries</text>
   <text x="1016" y="1008" class="sm"><tspan font-weight="700">Testing</tspan> &#160;Vitest · Miniflare · scripted readiness probes</text>
-  <text x="1016" y="1024" class="xs" fill="#35608f">~146,000 lines of TypeScript, React and SQL</text>
+  <text x="1016" y="1024" class="xs" fill="#35608f">Dated measurements and scope live in the README evidence snapshot</text>
 
   <!-- footer -->
   <rect x="0" y="1046" width="1540" height="34" fill="#12283f"/>
   <text x="24" y="1068" class="xs" fill="#9fb4cd">BotAnswer.ai · Roots No Limits LLC · Private beta</text>
-  <text x="1516" y="1068" class="xs" fill="#9fb4cd" text-anchor="end">v1.0 · July 2026</text>
+  <text x="1516" y="1068" class="xs" fill="#9fb4cd" text-anchor="end">v1.1 · August 2026</text>
 </svg>

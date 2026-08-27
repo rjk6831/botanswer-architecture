@@ -4,7 +4,7 @@
 
 ## Context
 
-Every conversation costs money, and the amount is unpredictable. A tenant with chatty customers and long documents can cost an order of magnitude more than a quiet one on the same plan. Flat-rate pricing over a variable-cost input is a structural way to lose money on your best-engaged customers.
+Every model-assisted conversation has a variable marginal cost. Usage differs with conversation volume, context size, document processing, task type, and model choice. Flat-rate pricing over that variable-cost input can make the most engaged tenants the least sustainable to serve.
 
 Metering can be bolted on later, but retrofitting it means threading a usage context through every call site after the fact, and the numbers are wrong until every path is covered.
 
@@ -12,17 +12,17 @@ Metering can be bolted on later, but retrofitting it means threading a usage con
 
 Meter at the point of the model call, not at the edges. Every call records tenant, model, task type and consumption, then settles against plan entitlements.
 
-Billing is Stripe: three plan tiers across four currencies (THB, JPY, TWD, USD), monthly and annual, seeded through migrations so environments stay reproducible rather than hand-configured. Metered-billing hooks are in place for plan-limit gating, tier upgrades and prepaid usage credits.
+Billing is Stripe: three plan tiers across four currencies (THB, JPY, TWD, USD), monthly and annual. D1 migrations version the billing schema and tier constraints; reviewed Wrangler environment configuration binds the 24 Stripe Price objects and amounts for each environment. Metering and entitlement seams support current plan-limit checks and tier changes. Prepaid usage credits remain a possible extension, not a shipped capability claimed by this decision.
 
 The quota guard sits in front of the router, so a tenant at limit is stopped before a provider call is made rather than after it has been paid for.
 
 ## Consequences
 
-**Good.** Unit economics are observable per tenant, which is what makes pricing a decision rather than a guess. Gating happens before spend, not after. Multi-currency pricing was designed in from the start rather than retrofitted, which matters in markets where charging in USD is itself a conversion problem.
+**Good.** Usage and cost are attributable per tenant, which makes unit economics queryable rather than leaving them as one provider invoice. Gating happens before spend, not after. Multi-currency pricing was designed in from the start rather than retrofitted.
 
-**Bad.** Every model call path has to go through the metered wrapper, and a call site that bypasses it is silently wrong in a way tests do not naturally catch. The pricing seed data is a migration concern, which couples billing config to schema versioning more tightly than is ideal.
+**Bad.** Every model call path has to go through the metered wrapper, and a call site that bypasses it is silently wrong in a way tests do not naturally catch. Billing schema and environment-specific price bindings are two reviewed surfaces that must remain aligned.
 
-**Neutral.** Twenty-four Stripe price objects across tiers, currencies and intervals is a lot of configuration surface for a pre-launch product. It was still cheaper to define once than to migrate customers later.
+**Neutral.** Twenty-four Stripe price objects across tiers, currencies and intervals is a lot of configuration surface for a private beta. It was still cheaper to define once than to migrate customers later.
 
 ## What I would revisit
 
