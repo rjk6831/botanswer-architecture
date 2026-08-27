@@ -3,7 +3,7 @@
 This document defines the quantitative claims in the public architecture overview
 and keeps codebase inventory separate from verification and production state.
 
-> **Snapshot date:** 24 August 2026
+> **Repository inventory refreshed:** 27 August 2026
 >
 > **Application source:** private
 >
@@ -13,49 +13,38 @@ and keeps codebase inventory separate from verification and production state.
 
 | Measure | Snapshot | What it means |
 |---|---:|---|
-| Captured WIP test inventory | **2,684 cases across 280 test files** | Work-in-progress snapshot, rounded to “approximately 2,700” in the overview. It is not presented as a fresh full-suite pass. |
+| Current WIP test inventory | **3,185 cases across 345 test files** | Structured Vitest collection on 27 August 2026. It is not presented as a fresh full-suite pass. |
 | Last complete green test checkpoint | **2,576 passing cases across 274 test files** | Separate Worker/runtime and dashboard lanes at commit `90cd31e63432`. |
-| Captured WIP authored TypeScript, TSX, and SQL | **203,782 lines across 770 files** | Raw BotMetrics subtotal minus one 4,606-line generated database backup. |
-| Clean committed engineering baseline | **198,917 lines** | Tracked TypeScript, TSX, and SQL at commit `e09c5e2088f3` after excluding the generated SQL backup. |
-| Captured adjusted source, config, and docs | **267,873 lines across 1,022 files** | Broader working-tree estimate after the generated backup and common lockfiles are excluded; includes documentation and configuration. |
-| Captured WIP migration inventory | **73 sequentially numbered files** | 70 were committed at the captured application HEAD (`e09c5e2088f3`) and 3 were additional WIP files; this does not imply remote application. |
+| Current repository maintenance surface | **363,798 lines across 1,218 files** | Supplied 27 August extension scan covering application source, tests, migrations, documentation, and supporting configuration. |
+| Prior clean committed engineering baseline | **198,917 lines** | Narrower TypeScript, TSX, and SQL baseline at commit `e09c5e2088f3`; retained for history and not directly comparable to the broad current count. |
+| 24 August WIP migration inventory | **73 sequentially numbered files** | 70 were committed at the captured application HEAD (`e09c5e2088f3`) and 3 were additional WIP files; this does not imply remote application. |
 | Production D1 checkpoint | **0068 applied** | Last remote read-only confirmation in the snapshot evidence. |
 | Localization checkpoint | **2,099 keys in each of 5 catalogs** | Last recorded complete catalog audit, not a live recount of later local work. |
 
 ## Line-count method
 
-The supplied BotMetrics run examined Git-visible working-tree files and skipped binary
-files from line and character counts. The public headline uses the narrow subtotal
-below, not the broadest available number:
+The supplied extension scan reported **363,798 physical lines across 1,218 files**.
+The overview rounds this to **approximately 364,000 repository lines**.
+Its scope intentionally includes application source, automated tests, SQL migrations,
+documentation, and supporting configuration, while excluding dependencies and binary
+assets.
 
-| Extension | Files | Lines |
-|---|---:|---:|
-| `.ts` | 620 | 160,862 |
-| `.tsx` | 77 | 33,407 |
-| `.sql` | 74 | 14,119 |
-| **Raw engineering-language subtotal** | **771** | **208,388** |
-| Generated database backup | −1 | −4,606 |
-| **Authored engineering-language subtotal** | **770** | **203,782** |
-
-That snapshot included then-current local work. For a stable clean-commit comparison,
-the same three tracked language families contained 203,523 physical lines at commit
-`e09c5e2088f3`; excluding a 4,606-line generated database backup produces a defensible
-committed baseline of **198,917 lines**.
-
-The raw BotMetrics nonbinary-text estimate was 272,479 lines across 1,023 files after
-common lockfiles were excluded. Removing the same generated database backup produces
-an adjusted **267,873 lines across 1,022 files** covering source, configuration, and
-documentation. It is disclosed as a broader maintenance-surface estimate, but it is
-not substituted for the narrower source-language total.
-
-Dependencies, binary media, and build artifacts are not presented as authored source.
-Lines of code measure maintenance surface—not quality, productivity, or business value.
+This is a broad maintenance-surface measure, not semantic source lines of code and not
+a productivity or quality claim. It should not be compared directly with the older
+198,917-line clean baseline, which counted only TypeScript, TSX, and SQL after removing
+a generated database backup.
 
 ## Test-count method and checkpoint
 
-The captured working-tree snapshot contained **2,684 cases across 280 Git-visible test files**:
-2,272 Worker/runtime cases across 231 files and 412 dashboard cases across 49 files.
-The overview rounds this to **approximately 2,700**, not `2,700+`.
+Structured Vitest collection on 27 August 2026 found **3,185 cases across 345 test
+files**:
+
+- Worker/runtime unit project: **2,341 cases across 223 files**
+- D1 project: **352 cases across 65 files**
+- Dashboard project: **492 cases across 57 files**
+
+Collection enumerates the cases that exist without executing them. The exact inventory
+is therefore not presented as an all-green test result.
 
 The most recent fully recorded two-lane checkpoint before this snapshot was commit
 `90cd31e63432`:
@@ -120,8 +109,8 @@ reported as focused. A local implementation is not described as deployed.
 - The application source is not public; this repository is an architecture and
   evidence pack.
 - BotAnswer is a deployed **private beta**, not a general-availability claim.
-- Approximately 2,700 is captured test inventory, not coverage percentage or a current
-  all-green assertion.
+- 3,185 is current collected test inventory, not coverage percentage or an all-green
+  assertion.
 - 73 migration files in the captured tree does not mean 73 migrations were applied to production.
 - A locally implemented payment-proof review path requires authorized operator
   confirmation; production deployment and live UAT remain pending. Automated
