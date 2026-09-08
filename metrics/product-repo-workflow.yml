@@ -1,0 +1,72 @@
+# Copy this file into the PRIVATE product repository as
+#   .github/workflows/publish-metrics.yml
+#
+# On every push to main it counts the repository with the public collector,
+# then commits the result to the public architecture repository, which
+# re-renders its README table and badges. Nothing from the product source
+# leaves the runner except the numbers in metrics/latest.json.
+#
+# One-time setup in the product repository:
+#   1. Create a fine-grained personal access token scoped to the single
+#      architecture repository with "Contents: read and write".
+#   2. Store it as the repository secret ARCHITECTURE_REPO_TOKEN.
+#   3. Set the two env values below.
+
+name: Publish engineering metrics
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PRODUCT: botanswer                       # or countermint
+  ARCH_REPO: rjk6831/botanswer-architecture # or rjk6831/countermint-architecture
+  I18N_DIR: dashboard/web/src/i18n          # leave empty for products without locale catalogs
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out product source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0            # commit counts need full history
+
+      - name: Check out architecture repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.ARCH_REPO }}
+          token: ${{ secrets.ARCHITECTURE_REPO_TOKEN }}
+          path: arch
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Count the repository
+        run: |
+          I18N_FLAG=""
+          if [ -n "$I18N_DIR" ]; then I18N_FLAG="--i18n $I18N_DIR"; fi
+          node arch/metrics/collect.mjs --repo "$GITHUB_WORKSPACE" --product "$PRODUCT" $I18N_FLAG --out arch/metrics/latest.json
+
+      - name: Render README block and badges
+        working-directory: arch
+        run: node metrics/render.mjs
+
+      - name: Commit to the architecture repository
+        working-directory: arch
+        run: |
+          git config user.name "metrics-bot"
+          git config user.email "metrics@rootsnolimits.com"
+          git add metrics/latest.json metrics/badges README.md
+          if git diff --cached --quiet; then
+            echo "No metric changes."
+            exit 0
+          fi
+          SHA=$(git -C "$GITHUB_WORKSPACE" rev-parse --short HEAD)
+          git commit -m "metrics: ${PRODUCT} @ ${SHA} ($(date -u +%Y-%m-%d))"
+          git push

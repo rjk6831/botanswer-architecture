@@ -1,0 +1,66 @@
+{
+  "product": "botanswer",
+  "measured_at": "2026-09-08",
+  "commit": "98376b2",
+  "commit_date": "2026-09-07",
+  "first_commit": "2026-07-01",
+  "commits_total": 473,
+  "commits_last_30_days": 264,
+  "lines": {
+    "application": 222066,
+    "tests": 157242,
+    "migrations": 18897,
+    "infra": 10218,
+    "code_total": 408423,
+    "docs": 51981
+  },
+  "files": {
+    "application": 590,
+    "tests": 529,
+    "test_files": 487,
+    "migrations": 114,
+    "infra": 57,
+    "docs": 221,
+    "tracked": 1585
+  },
+  "tests": {
+    "declared_cases": 4101,
+    "js_cases": 4101,
+    "js_parameterized_tables": 112,
+    "python_cases": 0,
+    "python_parametrize_decorators": 0
+  },
+  "excluded": {
+    "data_lines": 5749,
+    "binary_files": 34,
+    "lockfile_files": 3,
+    "generated_files": 26
+  },
+  "i18n": {
+    "catalogs": 5,
+    "keys_max": 3178,
+    "keys_min": 3064,
+    "files": [
+      {
+        "file": "dashboard/web/src/i18n/messages.ts",
+        "keys": 3178
+      },
+      {
+        "file": "dashboard/web/src/i18n/ja.ts",
+        "keys": 3064
+      },
+      {
+        "file": "dashboard/web/src/i18n/th.ts",
+        "keys": 3064
+      },
+      {
+        "file": "dashboard/web/src/i18n/zh-Hans.ts",
+        "keys": 3064
+      },
+      {
+        "file": "dashboard/web/src/i18n/zh-TW.ts",
+        "keys": 3064
+      }
+    ]
+  }
+}
