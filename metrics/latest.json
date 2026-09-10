@@ -1,65 +1,65 @@
 {
   "product": "botanswer",
-  "measured_at": "2026-09-08",
-  "commit": "12e0bfc",
-  "commit_date": "2026-09-09",
+  "measured_at": "2026-09-10",
+  "commit": "82f4768",
+  "commit_date": "2026-09-10",
   "first_commit": "2026-07-01",
-  "commits_total": 473,
-  "commits_last_30_days": 264,
+  "commits_total": 622,
+  "commits_last_30_days": 409,
   "lines": {
-    "application": 222066,
-    "tests": 157215,
-    "migrations": 18897,
-    "infra": 10290,
-    "code_total": 408468,
-    "docs": 51967
+    "application": 243928,
+    "tests": 170452,
+    "migrations": 22770,
+    "infra": 12667,
+    "code_total": 449817,
+    "docs": 59837
   },
   "files": {
-    "application": 590,
-    "tests": 529,
-    "test_files": 487,
-    "migrations": 114,
-    "infra": 58,
-    "docs": 221,
-    "tracked": 1586
+    "application": 708,
+    "tests": 606,
+    "test_files": 558,
+    "migrations": 130,
+    "infra": 99,
+    "docs": 274,
+    "tracked": 2138
   },
   "tests": {
-    "declared_cases": 4100,
-    "js_cases": 4100,
-    "js_parameterized_tables": 112,
+    "declared_cases": 4419,
+    "js_cases": 4419,
+    "js_parameterized_tables": 150,
     "python_cases": 0,
     "python_parametrize_decorators": 0
   },
   "excluded": {
-    "data_lines": 5749,
-    "binary_files": 34,
+    "data_lines": 5818,
+    "binary_files": 245,
     "lockfile_files": 3,
     "generated_files": 26
   },
   "i18n": {
     "catalogs": 5,
-    "keys_max": 3178,
-    "keys_min": 3064,
+    "keys_max": 3518,
+    "keys_min": 3404,
     "files": [
       {
         "file": "dashboard/web/src/i18n/messages.ts",
-        "keys": 3178
+        "keys": 3518
       },
       {
         "file": "dashboard/web/src/i18n/ja.ts",
-        "keys": 3064
+        "keys": 3404
       },
       {
         "file": "dashboard/web/src/i18n/th.ts",
-        "keys": 3064
+        "keys": 3404
       },
       {
         "file": "dashboard/web/src/i18n/zh-Hans.ts",
-        "keys": 3064
+        "keys": 3404
       },
       {
         "file": "dashboard/web/src/i18n/zh-TW.ts",
-        "keys": 3064
+        "keys": 3404
       }
     ]
   }
