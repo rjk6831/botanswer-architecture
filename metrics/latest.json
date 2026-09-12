@@ -1,65 +1,65 @@
 {
   "product": "botanswer",
   "measured_at": "2026-09-12",
-  "commit": "894dcf9",
+  "commit": "ed8bda8",
   "commit_date": "2026-09-12",
   "first_commit": "2026-07-01",
-  "commits_total": 689,
-  "commits_last_30_days": 466,
+  "commits_total": 699,
+  "commits_last_30_days": 476,
   "lines": {
-    "application": 256474,
-    "tests": 177220,
-    "migrations": 24177,
-    "infra": 12691,
-    "code_total": 470562,
-    "docs": 63464
+    "application": 265244,
+    "tests": 180201,
+    "migrations": 24765,
+    "infra": 12700,
+    "code_total": 482910,
+    "docs": 63665
   },
   "files": {
-    "application": 734,
-    "tests": 635,
-    "test_files": 587,
-    "migrations": 136,
+    "application": 764,
+    "tests": 654,
+    "test_files": 606,
+    "migrations": 141,
     "infra": 99,
-    "docs": 297,
-    "tracked": 2226
+    "docs": 299,
+    "tracked": 2288
   },
   "tests": {
-    "declared_cases": 4567,
-    "js_cases": 4567,
-    "js_parameterized_tables": 165,
+    "declared_cases": 4684,
+    "js_cases": 4684,
+    "js_parameterized_tables": 175,
     "python_cases": 0,
     "python_parametrize_decorators": 0
   },
   "excluded": {
     "data_lines": 5818,
-    "binary_files": 249,
+    "binary_files": 255,
     "lockfile_files": 3,
     "generated_files": 26
   },
   "i18n": {
     "catalogs": 5,
-    "keys_max": 3769,
-    "keys_min": 3655,
+    "keys_max": 3973,
+    "keys_min": 3859,
     "files": [
       {
         "file": "dashboard/web/src/i18n/messages.ts",
-        "keys": 3769
+        "keys": 3973
       },
       {
         "file": "dashboard/web/src/i18n/ja.ts",
-        "keys": 3655
+        "keys": 3859
       },
       {
         "file": "dashboard/web/src/i18n/th.ts",
-        "keys": 3655
+        "keys": 3859
       },
       {
         "file": "dashboard/web/src/i18n/zh-Hans.ts",
-        "keys": 3655
+        "keys": 3859
       },
       {
         "file": "dashboard/web/src/i18n/zh-TW.ts",
-        "keys": 3655
+        "keys": 3859
       }
     ]
   }
