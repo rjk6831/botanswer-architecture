@@ -1,65 +1,65 @@
 {
   "product": "botanswer",
   "measured_at": "2026-09-12",
-  "commit": "4c79685",
+  "commit": "e0b47ff",
   "commit_date": "2026-09-12",
   "first_commit": "2026-07-01",
-  "commits_total": 700,
-  "commits_last_30_days": 477,
+  "commits_total": 708,
+  "commits_last_30_days": 483,
   "lines": {
-    "application": 265893,
-    "tests": 180201,
-    "migrations": 24765,
-    "infra": 12700,
-    "code_total": 483559,
-    "docs": 63864
+    "application": 266730,
+    "tests": 181246,
+    "migrations": 24816,
+    "infra": 12762,
+    "code_total": 485554,
+    "docs": 64017
   },
   "files": {
-    "application": 765,
-    "tests": 654,
-    "test_files": 606,
-    "migrations": 141,
-    "infra": 99,
-    "docs": 300,
-    "tracked": 2292
+    "application": 773,
+    "tests": 663,
+    "test_files": 615,
+    "migrations": 142,
+    "infra": 101,
+    "docs": 301,
+    "tracked": 2320
   },
   "tests": {
-    "declared_cases": 4684,
-    "js_cases": 4684,
-    "js_parameterized_tables": 175,
+    "declared_cases": 4740,
+    "js_cases": 4740,
+    "js_parameterized_tables": 179,
     "python_cases": 0,
     "python_parametrize_decorators": 0
   },
   "excluded": {
     "data_lines": 5818,
-    "binary_files": 257,
+    "binary_files": 264,
     "lockfile_files": 3,
     "generated_files": 26
   },
   "i18n": {
     "catalogs": 5,
-    "keys_max": 3973,
-    "keys_min": 3859,
+    "keys_max": 4006,
+    "keys_min": 3892,
     "files": [
       {
         "file": "dashboard/web/src/i18n/messages.ts",
-        "keys": 3973
+        "keys": 4006
       },
       {
         "file": "dashboard/web/src/i18n/ja.ts",
-        "keys": 3859
+        "keys": 3892
       },
       {
         "file": "dashboard/web/src/i18n/th.ts",
-        "keys": 3859
+        "keys": 3892
       },
       {
         "file": "dashboard/web/src/i18n/zh-Hans.ts",
-        "keys": 3859
+        "keys": 3892
       },
       {
         "file": "dashboard/web/src/i18n/zh-TW.ts",
-        "keys": 3859
+        "keys": 3892
       }
     ]
   }
