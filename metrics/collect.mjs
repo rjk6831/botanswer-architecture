@@ -19,8 +19,8 @@
 // Not counted anywhere: dependencies, lockfiles, build output, binaries (images,
 // video, fonts, archives), database backups, XML and CSV data, JSON data files
 // larger than 2,000 lines (recorded evidence, demo datasets), design-canvas
-// exports, and files git does not track. Agent prompt folders (.claude/) count
-// as docs.
+// exports, and files git does not track. Files inside hidden tool folders (a
+// dot-prefixed directory other than .github or .husky) count as docs.
 //
 // Test cases are counted statically from source: `it(` / `test(` calls in
 // Vitest and Node test-runner files, `def test_` functions in pytest files.
@@ -56,7 +56,7 @@ function classify(file) {
   if (base.endsWith(".tsbuildinfo") || /\.timestamp-\d+/.test(base) || base.endsWith(".bundle.js") || base.endsWith(".dc.html")) return "generated";
   if (BINARY.has(ext)) return "binary";
   if (/^backup.*\.sql$/.test(base) || ext === ".xml" || ext === ".csv") return "data";
-  if (/(^|\/)\.claude(\/|$)/.test(low)) return "docs";
+  if (/(^|\/)\.(?!github\/|husky\/)[^/]+\//.test(low)) return "docs";
   if (/(^|\/)(tests?|__tests__|e2e|spec|__snapshots__|benchmarks?)(\/|$)/.test(low)) return "tests";
   if (/\.(test|spec)\.(ts|tsx|js|jsx|mjs|py)$/.test(low) || /(^|\/)test_[^/]*\.py$/.test(low) || base === "conftest.py") return "tests";
   if (/(^|\/)(migrations?|alembic\/versions)(\/|$)/.test(low)) return "migrations";
