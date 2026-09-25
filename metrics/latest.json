@@ -1,18 +1,18 @@
 {
   "product": "botanswer",
   "measured_at": "2026-09-25",
-  "commit": "9a0db841",
+  "commit": "cdb92e11",
   "commit_date": "2026-09-25",
   "first_commit": "2026-07-01",
-  "commits_total": 916,
-  "commits_last_30_days": 651,
+  "commits_total": 917,
+  "commits_last_30_days": 652,
   "lines": {
     "application": 291238,
     "tests": 198218,
     "migrations": 27135,
     "infra": 19235,
     "code_total": 535826,
-    "docs": 74384
+    "docs": 74401
   },
   "files": {
     "application": 981,
