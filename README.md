@@ -23,9 +23,9 @@ staff handoff, inside the LINE account the business already runs.
 <!-- metrics:start -->
 | Application source | Automated tests | Test cases | Migrations | Locales |
 |---:|---:|---:|---:|---:|
-| **293,425** lines | **200,080** lines in 749 files | **5,428** declared | **158** forward-only D1 SQL | **5** catalogs, 4,323 keys |
+| **293,426** lines | **200,084** lines in 749 files | **5,429** declared | **158** forward-only D1 SQL | **5** catalogs, 4,323 keys |
 
-<sub>Measured from the private product repository at commit `ca5c3e02` (2026-09-26); refreshed 2026-09-25. 539,891 lines of code in total across application, tests, migrations, and infrastructure; 921 commits since 2026-07-01, 654 in the last 30 days. Test cases: Vitest, 304 parameterized tables expand at run time. Counting rules and the workflow that keeps this current: <a href="metrics/README.md">metrics/README.md</a>.</sub>
+<sub>Measured from the private product repository at commit `ce391987` (2026-09-26); refreshed 2026-09-25. 539,896 lines of code in total across application, tests, migrations, and infrastructure; 922 commits since 2026-07-01, 655 in the last 30 days. Test cases: Vitest, 304 parameterized tables expand at run time. Counting rules and the workflow that keeps this current: <a href="metrics/README.md">metrics/README.md</a>.</sub>
 <!-- metrics:end -->
 
 [![test cases](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Frjk6831%2Fbotanswer-architecture%2Fmain%2Fmetrics%2Fbadges%2Ftests.json)](metrics/README.md)
