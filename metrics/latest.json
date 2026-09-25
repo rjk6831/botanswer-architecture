@@ -1,65 +1,65 @@
 {
   "product": "botanswer",
-  "measured_at": "2026-09-24",
-  "commit": "cb7abb33",
+  "measured_at": "2026-09-25",
+  "commit": "9a0db841",
   "commit_date": "2026-09-25",
   "first_commit": "2026-07-01",
-  "commits_total": 907,
-  "commits_last_30_days": 646,
+  "commits_total": 916,
+  "commits_last_30_days": 651,
   "lines": {
-    "application": 288030,
-    "tests": 195764,
-    "migrations": 27015,
-    "infra": 18677,
-    "code_total": 529486,
-    "docs": 74067
+    "application": 291238,
+    "tests": 198218,
+    "migrations": 27135,
+    "infra": 19235,
+    "code_total": 535826,
+    "docs": 74384
   },
   "files": {
-    "application": 965,
-    "tests": 775,
-    "test_files": 725,
-    "migrations": 156,
-    "infra": 116,
+    "application": 981,
+    "tests": 790,
+    "test_files": 740,
+    "migrations": 157,
+    "infra": 117,
     "docs": 382,
-    "tracked": 2934
+    "tracked": 3081
   },
   "tests": {
-    "declared_cases": 5293,
-    "js_cases": 5293,
-    "js_parameterized_tables": 290,
+    "declared_cases": 5374,
+    "js_cases": 5374,
+    "js_parameterized_tables": 293,
     "python_cases": 0,
     "python_parametrize_decorators": 0
   },
   "excluded": {
     "data_lines": 5818,
-    "binary_files": 459,
+    "binary_files": 573,
     "lockfile_files": 3,
     "generated_files": 26
   },
   "i18n": {
     "catalogs": 5,
-    "keys_max": 4268,
-    "keys_min": 4154,
+    "keys_max": 4316,
+    "keys_min": 4202,
     "files": [
       {
         "file": "dashboard/web/src/i18n/messages.ts",
-        "keys": 4268
+        "keys": 4316
       },
       {
         "file": "dashboard/web/src/i18n/ja.ts",
-        "keys": 4154
+        "keys": 4202
       },
       {
         "file": "dashboard/web/src/i18n/th.ts",
-        "keys": 4154
+        "keys": 4202
       },
       {
         "file": "dashboard/web/src/i18n/zh-Hans.ts",
-        "keys": 4154
+        "keys": 4202
       },
       {
         "file": "dashboard/web/src/i18n/zh-TW.ts",
-        "keys": 4154
+        "keys": 4202
       }
     ]
   }
