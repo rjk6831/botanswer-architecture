@@ -1,65 +1,65 @@
 {
   "product": "botanswer",
   "measured_at": "2026-09-28",
-  "commit": "badbd2cc",
+  "commit": "0e00786f",
   "commit_date": "2026-09-28",
   "first_commit": "2026-07-01",
-  "commits_total": 927,
-  "commits_last_30_days": 639,
+  "commits_total": 930,
+  "commits_last_30_days": 640,
   "lines": {
-    "application": 300691,
-    "tests": 204663,
-    "migrations": 27274,
-    "infra": 19263,
-    "code_total": 551891,
-    "docs": 75289
+    "application": 304999,
+    "tests": 207649,
+    "migrations": 27393,
+    "infra": 19271,
+    "code_total": 559312,
+    "docs": 75596
   },
   "files": {
-    "application": 1007,
-    "tests": 817,
-    "test_files": 766,
-    "migrations": 160,
+    "application": 1016,
+    "tests": 832,
+    "test_files": 781,
+    "migrations": 161,
     "infra": 117,
     "docs": 382,
-    "tracked": 3137
+    "tracked": 3164
   },
   "tests": {
-    "declared_cases": 5562,
-    "js_cases": 5562,
-    "js_parameterized_tables": 317,
+    "declared_cases": 5670,
+    "js_cases": 5670,
+    "js_parameterized_tables": 326,
     "python_cases": 0,
     "python_parametrize_decorators": 0
   },
   "excluded": {
     "data_lines": 5818,
-    "binary_files": 573,
+    "binary_files": 575,
     "lockfile_files": 3,
     "generated_files": 26
   },
   "i18n": {
     "catalogs": 5,
-    "keys_max": 4518,
-    "keys_min": 4404,
+    "keys_max": 4613,
+    "keys_min": 4499,
     "files": [
       {
         "file": "dashboard/web/src/i18n/messages.ts",
-        "keys": 4518
+        "keys": 4613
       },
       {
         "file": "dashboard/web/src/i18n/ja.ts",
-        "keys": 4404
+        "keys": 4499
       },
       {
         "file": "dashboard/web/src/i18n/th.ts",
-        "keys": 4404
+        "keys": 4499
       },
       {
         "file": "dashboard/web/src/i18n/zh-Hans.ts",
-        "keys": 4404
+        "keys": 4499
       },
       {
         "file": "dashboard/web/src/i18n/zh-TW.ts",
-        "keys": 4404
+        "keys": 4499
       }
     ]
   }
