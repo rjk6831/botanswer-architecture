@@ -1,32 +1,32 @@
 {
   "product": "botanswer",
   "measured_at": "2026-10-16",
-  "commit": "60df884d",
+  "commit": "f40295a8",
   "commit_date": "2026-10-16",
   "first_commit": "2026-07-01",
-  "commits_total": 1305,
-  "commits_last_30_days": 526,
+  "commits_total": 1309,
+  "commits_last_30_days": 530,
   "lines": {
-    "application": 337616,
-    "tests": 243503,
-    "migrations": 29198,
-    "infra": 23990,
-    "code_total": 634307,
-    "docs": 89249
+    "application": 337843,
+    "tests": 243893,
+    "migrations": 29278,
+    "infra": 23996,
+    "code_total": 635010,
+    "docs": 89389
   },
   "files": {
-    "application": 1266,
-    "tests": 1025,
-    "test_files": 957,
-    "migrations": 180,
+    "application": 1268,
+    "tests": 1031,
+    "test_files": 963,
+    "migrations": 181,
     "infra": 157,
-    "docs": 443,
-    "tracked": 3842
+    "docs": 444,
+    "tracked": 3852
   },
   "tests": {
-    "declared_cases": 7124,
-    "js_cases": 7124,
-    "js_parameterized_tables": 503,
+    "declared_cases": 7142,
+    "js_cases": 7142,
+    "js_parameterized_tables": 507,
     "python_cases": 0,
     "python_parametrize_decorators": 0
   },
@@ -38,28 +38,28 @@
   },
   "i18n": {
     "catalogs": 5,
-    "keys_max": 4937,
-    "keys_min": 4823,
+    "keys_max": 4939,
+    "keys_min": 4825,
     "files": [
       {
         "file": "dashboard/web/src/i18n/messages.ts",
-        "keys": 4937
+        "keys": 4939
       },
       {
         "file": "dashboard/web/src/i18n/ja.ts",
-        "keys": 4823
+        "keys": 4825
       },
       {
         "file": "dashboard/web/src/i18n/th.ts",
-        "keys": 4823
+        "keys": 4825
       },
       {
         "file": "dashboard/web/src/i18n/zh-Hans.ts",
-        "keys": 4823
+        "keys": 4825
       },
       {
         "file": "dashboard/web/src/i18n/zh-TW.ts",
-        "keys": 4823
+        "keys": 4825
       }
     ]
   }
