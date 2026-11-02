@@ -1,31 +1,31 @@
 {
   "product": "botanswer",
-  "measured_at": "2026-10-16",
-  "commit": "93edd61d",
-  "commit_date": "2026-10-17",
+  "measured_at": "2026-11-02",
+  "commit": "0042274b",
+  "commit_date": "2026-11-03",
   "first_commit": "2026-07-01",
-  "commits_total": 1323,
-  "commits_last_30_days": 544,
+  "commits_total": 1328,
+  "commits_last_30_days": 176,
   "lines": {
-    "application": 337827,
-    "tests": 244171,
+    "application": 339534,
+    "tests": 244284,
     "migrations": 29278,
     "infra": 23996,
-    "code_total": 635272,
-    "docs": 89577
+    "code_total": 637092,
+    "docs": 89695
   },
   "files": {
-    "application": 1268,
-    "tests": 1033,
-    "test_files": 965,
+    "application": 1269,
+    "tests": 1034,
+    "test_files": 966,
     "migrations": 181,
     "infra": 157,
-    "docs": 447,
-    "tracked": 3857
+    "docs": 448,
+    "tracked": 3860
   },
   "tests": {
-    "declared_cases": 7147,
-    "js_cases": 7147,
+    "declared_cases": 7152,
+    "js_cases": 7152,
     "js_parameterized_tables": 512,
     "python_cases": 0,
     "python_parametrize_decorators": 0
