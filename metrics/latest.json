@@ -1,38 +1,38 @@
 {
   "product": "botanswer",
   "measured_at": "2026-11-03",
-  "commit": "1e740dac",
+  "commit": "e7b1a18d",
   "commit_date": "2026-11-03",
   "first_commit": "2026-07-01",
-  "commits_total": 1389,
-  "commits_last_30_days": 237,
+  "commits_total": 1398,
+  "commits_last_30_days": 246,
   "lines": {
-    "application": 343136,
-    "tests": 248463,
+    "application": 343614,
+    "tests": 248714,
     "migrations": 30279,
     "infra": 24954,
-    "code_total": 646832,
-    "docs": 91169
+    "code_total": 647561,
+    "docs": 91289
   },
   "files": {
-    "application": 1318,
-    "tests": 1083,
-    "test_files": 1012,
+    "application": 1320,
+    "tests": 1086,
+    "test_files": 1013,
     "migrations": 189,
     "infra": 168,
-    "docs": 455,
-    "tracked": 3989
+    "docs": 456,
+    "tracked": 4007
   },
   "tests": {
-    "declared_cases": 7313,
-    "js_cases": 7313,
-    "js_parameterized_tables": 556,
+    "declared_cases": 7315,
+    "js_cases": 7315,
+    "js_parameterized_tables": 558,
     "python_cases": 0,
     "python_parametrize_decorators": 0
   },
   "excluded": {
     "data_lines": 5818,
-    "binary_files": 695,
+    "binary_files": 707,
     "lockfile_files": 3,
     "generated_files": 26
   },
