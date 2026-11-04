@@ -1,65 +1,65 @@
 {
   "product": "botanswer",
   "measured_at": "2026-11-04",
-  "commit": "1c599475",
+  "commit": "bd77d007",
   "commit_date": "2026-11-04",
   "first_commit": "2026-07-01",
-  "commits_total": 1430,
-  "commits_last_30_days": 277,
+  "commits_total": 1728,
+  "commits_last_30_days": 566,
   "lines": {
-    "application": 388607,
-    "tests": 481893,
-    "migrations": 33597,
-    "infra": 37174,
-    "code_total": 941271,
-    "docs": 101321
+    "application": 393092,
+    "tests": 489654,
+    "migrations": 34537,
+    "infra": 38513,
+    "code_total": 955796,
+    "docs": 107045
   },
   "files": {
-    "application": 1738,
-    "tests": 1409,
-    "test_files": 1316,
-    "migrations": 226,
-    "infra": 255,
-    "docs": 549,
-    "tracked": 5577
+    "application": 1886,
+    "tests": 1535,
+    "test_files": 1438,
+    "migrations": 242,
+    "infra": 277,
+    "docs": 683,
+    "tracked": 6038
   },
   "tests": {
-    "declared_cases": 8595,
-    "js_cases": 8595,
-    "js_parameterized_tables": 753,
+    "declared_cases": 9045,
+    "js_cases": 9045,
+    "js_parameterized_tables": 797,
     "python_cases": 0,
     "python_parametrize_decorators": 0
   },
   "excluded": {
-    "data_lines": 2044279,
-    "binary_files": 1306,
+    "data_lines": 2057862,
+    "binary_files": 1317,
     "lockfile_files": 3,
     "generated_files": 29
   },
   "i18n": {
     "catalogs": 5,
-    "keys_max": 5584,
-    "keys_min": 5470,
+    "keys_max": 5592,
+    "keys_min": 5478,
     "files": [
       {
         "file": "dashboard/web/src/i18n/messages.ts",
-        "keys": 5584
+        "keys": 5592
       },
       {
         "file": "dashboard/web/src/i18n/ja.ts",
-        "keys": 5470
+        "keys": 5478
       },
       {
         "file": "dashboard/web/src/i18n/th.ts",
-        "keys": 5470
+        "keys": 5478
       },
       {
         "file": "dashboard/web/src/i18n/zh-Hans.ts",
-        "keys": 5470
+        "keys": 5478
       },
       {
         "file": "dashboard/web/src/i18n/zh-TW.ts",
-        "keys": 5470
+        "keys": 5478
       }
     ]
   }
