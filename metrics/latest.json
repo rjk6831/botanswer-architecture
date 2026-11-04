@@ -1,65 +1,65 @@
 {
   "product": "botanswer",
-  "measured_at": "2026-11-03",
-  "commit": "6ffce2c6",
+  "measured_at": "2026-11-04",
+  "commit": "5417f4a9",
   "commit_date": "2026-11-04",
   "first_commit": "2026-07-01",
-  "commits_total": 1417,
+  "commits_total": 1418,
   "commits_last_30_days": 265,
   "lines": {
-    "application": 343960,
-    "tests": 249288,
-    "migrations": 30279,
-    "infra": 24978,
-    "code_total": 648505,
-    "docs": 91550
+    "application": 388556,
+    "tests": 481770,
+    "migrations": 33597,
+    "infra": 37030,
+    "code_total": 940953,
+    "docs": 100958
   },
   "files": {
-    "application": 1323,
-    "tests": 1091,
-    "test_files": 1017,
-    "migrations": 189,
-    "infra": 168,
-    "docs": 457,
-    "tracked": 4016
+    "application": 1738,
+    "tests": 1409,
+    "test_files": 1316,
+    "migrations": 226,
+    "infra": 254,
+    "docs": 544,
+    "tracked": 5571
   },
   "tests": {
-    "declared_cases": 7340,
-    "js_cases": 7340,
-    "js_parameterized_tables": 562,
+    "declared_cases": 8592,
+    "js_cases": 8592,
+    "js_parameterized_tables": 752,
     "python_cases": 0,
     "python_parametrize_decorators": 0
   },
   "excluded": {
-    "data_lines": 5818,
-    "binary_files": 707,
+    "data_lines": 2044279,
+    "binary_files": 1306,
     "lockfile_files": 3,
-    "generated_files": 26
+    "generated_files": 29
   },
   "i18n": {
     "catalogs": 5,
-    "keys_max": 5009,
-    "keys_min": 4895,
+    "keys_max": 5584,
+    "keys_min": 5470,
     "files": [
       {
         "file": "dashboard/web/src/i18n/messages.ts",
-        "keys": 5009
+        "keys": 5584
       },
       {
         "file": "dashboard/web/src/i18n/ja.ts",
-        "keys": 4895
+        "keys": 5470
       },
       {
         "file": "dashboard/web/src/i18n/th.ts",
-        "keys": 4895
+        "keys": 5470
       },
       {
         "file": "dashboard/web/src/i18n/zh-Hans.ts",
-        "keys": 4895
+        "keys": 5470
       },
       {
         "file": "dashboard/web/src/i18n/zh-TW.ts",
-        "keys": 4895
+        "keys": 5470
       }
     ]
   }
