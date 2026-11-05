@@ -1,10 +1,10 @@
 {
   "product": "botanswer",
   "measured_at": "2026-11-05",
-  "commit": "920f8557",
+  "commit": "d8961df6",
   "commit_date": "2026-11-05",
   "first_commit": "2026-07-01",
-  "commits_total": 1758,
+  "commits_total": 1759,
   "commits_last_30_days": 575,
   "lines": {
     "application": 393242,
@@ -12,7 +12,7 @@
     "migrations": 34537,
     "infra": 38578,
     "code_total": 956327,
-    "docs": 107891
+    "docs": 107911
   },
   "files": {
     "application": 1888,
