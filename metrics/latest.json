@@ -1,65 +1,65 @@
 {
   "product": "botanswer",
   "measured_at": "2026-11-05",
-  "commit": "0d1fcb33",
+  "commit": "af1c1ef5",
   "commit_date": "2026-11-05",
   "first_commit": "2026-07-01",
-  "commits_total": 1762,
-  "commits_last_30_days": 578,
+  "commits_total": 1801,
+  "commits_last_30_days": 611,
   "lines": {
-    "application": 393247,
-    "tests": 489998,
-    "migrations": 34537,
-    "infra": 38578,
-    "code_total": 956360,
-    "docs": 107978
+    "application": 394508,
+    "tests": 490985,
+    "migrations": 34632,
+    "infra": 38592,
+    "code_total": 958717,
+    "docs": 108779
   },
   "files": {
-    "application": 1888,
-    "tests": 1537,
-    "test_files": 1440,
-    "migrations": 242,
+    "application": 1901,
+    "tests": 1547,
+    "test_files": 1450,
+    "migrations": 245,
     "infra": 278,
-    "docs": 698,
-    "tracked": 6058
+    "docs": 708,
+    "tracked": 6097
   },
   "tests": {
-    "declared_cases": 9058,
-    "js_cases": 9058,
-    "js_parameterized_tables": 799,
+    "declared_cases": 9102,
+    "js_cases": 9102,
+    "js_parameterized_tables": 808,
     "python_cases": 0,
     "python_parametrize_decorators": 0
   },
   "excluded": {
     "data_lines": 2057869,
-    "binary_files": 1317,
+    "binary_files": 1320,
     "lockfile_files": 3,
     "generated_files": 29
   },
   "i18n": {
     "catalogs": 5,
-    "keys_max": 5598,
-    "keys_min": 5484,
+    "keys_max": 5601,
+    "keys_min": 5487,
     "files": [
       {
         "file": "dashboard/web/src/i18n/messages.ts",
-        "keys": 5598
+        "keys": 5601
       },
       {
         "file": "dashboard/web/src/i18n/ja.ts",
-        "keys": 5484
+        "keys": 5487
       },
       {
         "file": "dashboard/web/src/i18n/th.ts",
-        "keys": 5484
+        "keys": 5487
       },
       {
         "file": "dashboard/web/src/i18n/zh-Hans.ts",
-        "keys": 5484
+        "keys": 5487
       },
       {
         "file": "dashboard/web/src/i18n/zh-TW.ts",
-        "keys": 5484
+        "keys": 5487
       }
     ]
   }
